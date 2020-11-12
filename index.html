@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+      <!-- Compiled and minified CSS -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+   
+     <!--Import Google Icon Font-->
+     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     <!--Import materialize.css-->
+     <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+     <script type="text/javascript" src="js/materialize.min.js"></script>
+      <link href ="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.1/css/bulma.min.css" rel = stylesheet>
+
+     
+</head>
+<body>
+
+  <style>
+
+      .top{
+        margin-bottom: 50px;
+        height:200px;
+      }
+
+      .center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 50%;
+      height:100%
+      }
+
+      body {
+      display: flex;
+      min-height: 100vh;
+      flex-direction: column;
+      }
+
+      main {
+        flex: 1 0 auto;
+      }
+
+      .browser-default{
+        margin-top:20px
+      }
+
+      .nav-wrapper a {
+        text-align: center;
+      }
+
+      .savedPlants{
+        float:right;
+        width:50%
+      }
+
+    .select{
+
+      width:100%
+    }
+    #cardheader{
+      height:150px;
+      width:100%;
+      border: 1px solid black;
+
+
+    }
+    #cardheader h1{
+
+      text-align: center;
+      margin-top:75px;
+    }
+
+
+
+   
+
+      
+
+  </style>
+
+
+
+
+<div class="input-field col s12">
+  <select>
+    <option value="" disabled selected>Choose your option</option>
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+    <option value="3">Option 3</option>
+  </select>
+  <label>Materialize Select</label>
+</div>
+
+
+
+<!-- main navbar -->
+  <nav class = "top" >
+    <div class="nav-wrapper" >
+      <a href="" class="brand-logo"><h3 class = >LatePlanter<h3></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="">sass</a></li>
+        <li><a href="">sass <span class="new badge">4</span></a></li>
+        <li><a href="">sass</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+  
+  <div class="row">
+
+
+
+    <div class="col s3">
+
+
+      <!-- secondary Navbar (Title for User Input fields) -->
+        <div class="nav-wrapper" class="valign-wrapper">
+          <h5 class = "center-align" class="valign-wrapper">Your Future Plant</h5>
+          <div class="col s12">
+          
+          </div>
+        </div>
+      </nav>
+
+      
+     
+     <!-- First two user inputs in place of radio buttons.  -->
+       <!-- //   Working on this block the below. These input options better match text input-->
+        <!-- <select>
+          <option value="" disabled selected>Choose your option</option>
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+          <option value="3">Option 3</option>
+        </select>
+        <label>Materialize Select</label> -->
+
+      
+        <select class="browser-default">
+          <option value="" disabled selected>Indoor/Outdoor</option>
+          <option value="1">Indoor</option>
+          <option value="2">Outdoor</option>
+        </select>
+
+ 
+        <select class="browser-default">
+          <option value="" disabled selected>Edible/Non-Edible</option>
+          <option value="1">Edible</option>
+          <option value="2">Non Edible</option>
+        </select>
+
+
+
+                
+      <!-- Last three inputs (Zip, Weather, Space) -->
+      <div class="row">
+        <form class="col s12">
+          <div class="row">
+            <div class="input-field col s12">
+              <textarea id="textarea4" class="materialize-textarea"></textarea>
+              <label for="textarea1">Zipcode</label>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="input-field col s12">
+
+     </div>
+      <div class="row">
+        <form class="col s12">
+          <div class="row">
+            <div class="input-field col s12">
+              <textarea id="textarea1" class="materialize-textarea"></textarea>
+              <label for="textarea1">Sunny</label>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="row">
+    
+      </div>
+      <div class="row">
+        <form class="col s12">
+          <div class="row">
+            <div class="input-field col s12">
+              <textarea id="textarea1" class="materialize-textarea"></textarea>
+              <label for="textarea1">Space</label>
+            </div>
+          </div>
+        </form>
+      </div>  
+
+  
+    </div>
+
+    <!-- Query response from API into table?need some more modification for mobile-->
+    <!-- Table could be another way to go on this -->
+    <div class="col s3" class="valign-wrapper">
+
+
+      <table>
+        <thead>
+          <tr>
+              <th>Plant</th>
+              <th>Plant Species</th>
+              <th>Plant Price</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>Alvin</td>
+            <td>Eclair</td>
+            <td>$0.87</td>
+          </tr>
+          <tr>
+            <td>Alan</td>
+            <td>Jellybean</td>
+            <td>$3.76</td>
+          </tr>
+          <tr>
+            <td>Jonathan</td>
+            <td>Lollipop</td>
+            <td>$7.00</td>
+          </tr>
+          <tr>
+            <td>Jonathan</td>
+            <td>Lollipop</td>
+            <td>$7.00</td>
+          </tr>
+          <tr>
+            <td>Jonathan</td>
+            <td>Lollipop</td>
+            <td>$7.00</td>
+          </tr>
+          <tr>
+            <td>Jonathan</td>
+            <td>Lollipop</td>
+            <td>$7.00</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+    <div class="col s6">
+      <div class="card Large">
+        <div id = cardheader><h1>Images!</h1></div>
+        <img src="pexels-iconcom-1214394.jpg" alt="Plant" class = "center" height= 2000px width= 900px>
+      </div>
+                
+    
+  </div>
+
+  <div class = "savedPlants">
+
+  <h5 class = "center-align">Sample Plant</h5>
+      <ul class="collection with-header">
+        <li class="collection-header"><h4>Plant Collection</h4></li>
+        <li class="collection-item"><div>Plant One<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li>
+        <li class="collection-item"><div>Plant Two<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li>
+        <li class="collection-item"><div>Plant Three<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li>
+        <li class="collection-item"><div>Plant Four<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li>
+      </ul>
+
+    </div>
+
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="js/materialize.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('select');
+            var instances = M.FormSelect.init(elems);
+        });
+
+</script>
+</body>
+</html>

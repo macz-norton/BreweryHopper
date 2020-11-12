@@ -11,11 +11,20 @@
      <!--Import Google Icon Font-->
      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
      <!--Import materialize.css-->
-     <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
 
      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-     <script type="text/javascript" src="js/materialize.min.js"></script>
-      <link href ="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.1/css/bulma.min.css" rel = stylesheet>
+
+<!-- THIS is the JQuery link -->
+       <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<!-- THIS is the MomentJS link -->
+      <script
+        type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"
+      ></script>
+
 
      
 </head>
@@ -142,7 +151,7 @@
         <label>Materialize Select</label> -->
 
       
-        <select class="browser-default">
+        <select class="browser-default indoorOutdoor">
           <option value="" disabled selected>Indoor/Outdoor</option>
           <option value="1">Indoor</option>
           <option value="2">Outdoor</option>
@@ -163,7 +172,7 @@
         <form class="col s12">
           <div class="row">
             <div class="input-field col s12">
-              <textarea id="textarea4" class="materialize-textarea"></textarea>
+              <textarea id="textarea4" class="materialize-textarea classZip"></textarea>
               <label for="textarea1">Zipcode</label>
             </div>
           </div>
@@ -273,13 +282,7 @@
 
 
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script type="text/javascript" src="js/materialize.min.js"></script>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-            var elems = document.querySelectorAll('select');
-            var instances = M.FormSelect.init(elems);
-        });
-
-</script>
+    <!-- THIS is the Script link -->
+  <script type="text/javascript" src="./Assets/script.js"></script>
 </body>
 </html>

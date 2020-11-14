@@ -9,6 +9,7 @@ var cityInput = "Seattle" //change this after you have an input to grab from!
 
 //DECLARE global variables
 var breweriesArray=[]
+var breweryIndex = 0;
 
 //GET breweryStuff 
 function getBreweries() {
@@ -21,15 +22,18 @@ function getBreweries() {
     })
     .then(function(response) {
         console.log(response)
+        console.log(response[breweryIndex].name);
     });
 
-    //LOOP through the results to store each brewery as an object in our `breweriesArray`
-    for (let i = 0; i < 20; i++) {
-        var element = response[i];
-        
-    }
 
-    console.log(response.name)
+
+    //LOOP through the results to store each brewery as an object in our `breweriesArray`
+    // for (let i = 0; i < 20; i++) {
+    //     var element = response[i];
+        
+    // }
+
+
     // name
     // street
     // phone

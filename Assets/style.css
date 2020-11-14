@@ -1,6 +1,7 @@
 .top{
     margin-bottom: 50px;
     height:200px;
+    background-color: rgb(94, 23, 23);
   }
 
   .center {
@@ -27,8 +28,13 @@
 
   .nav-wrapper a {
     text-align: center;
+    
   }
 
+  .searchButton {
+    background-color: rgb(6, 68, 6);
+    color: white;
+  }
 
 
 

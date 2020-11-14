@@ -13,7 +13,6 @@ var breweryCollectionEl = $(".collection")
 
 //DECLARE global variables
 var breweriesArray=[]
-var breweryIndex = 0;
 var breweryObj;
 
 
@@ -51,7 +50,7 @@ function getBreweries(boop) {
                 $(breweryCollectionEl).append($("<p>").text(brewery).addClass("collection-item"));
             
             }
-                
+
 
 
             

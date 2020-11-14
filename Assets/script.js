@@ -1,11 +1,11 @@
 //DECLARE DOM ELEMENTS
-var indoorOutdoorEl = $(".indoorOutdoor")
+var cityEl = $(".indoorOutdoor")
     console.log(indoorOutdoorEl)
 var zipCodeEl = $(".classZip")
     console.log(zipCodeEl)
 
 
-    //GET growstuff 
+    //GET breweryStuff 
 function getPlants() {
 
     var callType="plantings"

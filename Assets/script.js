@@ -9,6 +9,7 @@ var cityInput = "Seattle" //change this after you have an input to grab from!
 
 //DECLARE global variables
 var breweriesArray=[]
+var breweryIndex = 0;
 
 //GET breweryStuff 
 function getBreweries() {

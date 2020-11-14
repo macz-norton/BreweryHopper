@@ -2,6 +2,7 @@
     margin-bottom: 50px;
     height:200px;
     background-color: rgb(94, 23, 23);
+    padding-top: 30px;
   }
 
   .center {
@@ -22,19 +23,53 @@
     flex: 1 0 auto;
   }
 
-  .browser-default{
-    margin-top:20px
+  .nav-wrapper {
+    padding: 10px;
   }
 
-  .nav-wrapper a {
-    text-align: center;
-    
+  #breweryImg {
+    display: inline;
+  }
+
+  .nav li {
+    display: inline;
+    margin: 15px;
+    padding: 15px;
+    font-size: 15px;
+    width: auto;
+  }
+
+  h1 {
+    font-family: 'Berkshire Swash', cursive;
+    font-size: 70px;
+    padding-left: 35px;
+    display: inline;
   }
 
   .searchButton {
     background-color: rgb(6, 68, 6);
     color: white;
   }
+
+  #breweryInfo {
+    text-align: center;
+    padding-top: 10px;
+  }
+
+  .card-image {
+    width: 60%;
+    height: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+
+  }
+
+  #cardHeader h3 {
+    padding-top: 10px;
+    text-align: center;
+  }
+
 
 
 

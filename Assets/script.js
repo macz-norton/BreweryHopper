@@ -1,24 +1,23 @@
 //DECLARE DOM ELEMENTS
-var cityEl = $(".indoorOutdoor")
-    console.log(indoorOutdoorEl)
-var zipCodeEl = $(".classZip")
-    console.log(zipCodeEl)
+// var cityEl = $(".indoorOutdoor")
+//     console.log(indoorOutdoorEl)
+// var zipCodeEl = $(".classZip")
+//     console.log(zipCodeEl)
 
+    
+var cityInput = "Seattle" //change this after you have an input to grab from!
 
-    //GET breweryStuff 
-function getPlants() {
-
-    var callType="plantings"
-    // var apiKeyMNorton = "GBqEm499B1LqBOuWTqrc3Uu4SSONPL2c5C9UU_fm_VY"
-    var queryURL="https://growstuff.org/api/v1/"+callType
+//GET breweryStuff 
+function getBreweries() {
+    var queryURL="https://api.openbrewerydb.org/breweries?by_city="+cityInput
         console.log(queryURL)
-
+    //AJAX call
     $.ajax({
         url: queryURL,
         method: "GET"
     })
-    // .then(function(response) {
-    //     console.log(response)
-    // });
+    .then(function(response) {
+        console.log(response)
+    });
 }
-getPlants();
+getBreweries();

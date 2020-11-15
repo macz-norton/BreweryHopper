@@ -1,19 +1,25 @@
 //DECLARE DOM ELEMENTS
-// var cityEl = $(".indoorOutdoor")
-//     console.log(indoorOutdoorEl)
-// var zipCodeEl = $(".classZip")
-//     console.log(zipCodeEl)
 
-    
-var cityInput = "Seattle" //change this after you have an input to grab from!
+// var cityInputEl = "Seattle" //change this after you have an input to grab from!
+var cityInputEl = $("#cityName")
+    console.log(cityInputEl)
+
+var searchButtonEl = $(".searchButton")
+    console.log(searchButtonEl)
+var breweryCollectionEl = $(".collection")
+    console.log(breweryCollectionEl)  
+
+
 
 //DECLARE global variables
 var breweriesArray=[]
-var breweryIndex = 0;
+var breweryObj;
+
+
 
 //GET breweryStuff 
-function getBreweries() {
-    var queryURL="https://api.openbrewerydb.org/breweries?by_city="+cityInput
+function getBreweries(boop) {
+    var queryURL="https://api.openbrewerydb.org/breweries?by_city="+boop
         console.log(queryURL)
     //AJAX call
     $.ajax({
@@ -25,19 +31,43 @@ function getBreweries() {
 
     // LOOP through the results to store each brewery as an object in our `breweriesArray`
     for (let i = 0; i < 10; i++) {
-        var breweryObj={
+        breweryObj={
             breweryName: response[i].name,
             breweryStreet: response[i].street,
             breweryPhone:response[i].phone,
             breweryWebsite:response[i].website_url,
             breweryType:response[i].brewery_type,
             breweryLat:response[i].latitude,
-            breweryLon:response[i].longitude    
+            breweryLon:response[i].longitude,
+            breweryCity:response[i].city,   
         }
-        // console.log(breweryObj)
         breweriesArray.push(breweryObj)
-            console.log(breweriesArray)
     };
+
+            for (let i = 0; i < breweriesArray.length; i++) {
+                var brewery = breweriesArray[i].breweryName;
+                    console.log(breweriesArray)
+                $(breweryCollectionEl).append($("<p>").text(brewery).addClass("collection-item"));
+            
+            }
+
+
+
+            
+
 });
 }
 getBreweries();
+console.log(breweriesArray)
+
+//CLICK FUNCTIONALITY
+searchButtonEl.on("click", function(event) {
+    event.preventDefault();
+    console.log(this);
+    
+    var cityCapitalized = cityInputEl.val().trim();
+        console.log(cityCapitalized)
+
+getBreweries(cityCapitalized)
+    // return
+});

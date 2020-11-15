@@ -73,6 +73,10 @@ getBreweries(cityCapitalized)
 });
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2b9549e37dd1e1c4b9a4232cd117460afa3709b3
 var APIkey = "AIzaSyCNMT79cyhTQf0GVQoNdOpOKcYsTL2jqdQ";
 
 // Remove lat and long when pulled in from other ajax function

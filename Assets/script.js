@@ -5,6 +5,8 @@ var cityInputEl = $("#cityName")
     console.log(cityInputEl)
 
 //Elements of the main card
+var mainCardEl = $(".mainCard")
+    // console.log(mainCardEl)
 var mainCardNameEl = $(".mainCardName")
     // console.log(mainCardNameEl)
 var mainCardTypeEl = $(".mainCardType")
@@ -90,23 +92,26 @@ getBreweries(cityCapitalized)
 });
 
 //RENDER main card
-function renderMainCard(){
+function renderMainCard(boop){
 
-$(mainCardNameEl).empty();
-$(mainCardNameEl).append()
+// $(mainCardEl).empty();
+// $(mainCardNameEl).append()
 
-mainCardTypeEl = $(".mainCardType")
 
-mainCardAddressEl = $(".mainCardAddress")
+// $(mainCardNameEl).empty()
+mainCardNameEl.append(($("<p>")).text(boop.breweryName).addClass("mainCardName"))
 
-mainCardPhoneEl = $(".mainCardPhone")
+mainCardTypeEl.append(($("<p>")).text(boop.breweryType).addClass("mainCardType"))
+
+mainCardAddressEl.append(($("<p>")).text(boop.breweryStreet).addClass("mainCardAddress"))
+
+mainCardPhoneEl.append(($("<p>")).text(boop.breweryPhone).addClass("mainCardPhone"))
     
-mainCardWebsiteEl = $(".mainCardWebsite")
-
-
+mainCardWebsiteEl.append(($("<a>")).text(boop.breweryWebsite).addClass("mainCardWebsite"))
 
 }
-renderMainCard()
+
+// renderMainCard()
 
 
 var APIkey = "AIzaSyCNMT79cyhTQf0GVQoNdOpOKcYsTL2jqdQ";
@@ -147,3 +152,31 @@ function breweryLogo(website_url) {
     })
 
 }
+
+breweryCollectionEl.on("click", function(event){
+    event.preventDefault();
+    event.stopPropagation();
+    var breweryToBeRenderedName = $(event.target).text()
+        console.log(breweryToBeRenderedName)
+    var renderedBreweryObj;
+        console.log(renderedBreweryObj)
+        
+
+    for (let i = 0; i < breweriesArray.length; i++) {
+        var element = breweriesArray[i].breweryName;
+            // console.log(element)
+            // console.log(breweriesArray)
+            // console.log(breweriesArray[i].breweryName)
+            if(element==breweryToBeRenderedName){
+                // console.log(element)
+                // console.log("THIS WORKS")
+                    
+                renderedBreweryObj =  breweriesArray[i] 
+                    // console.log(renderedBreweryObj)
+                renderMainCard(renderedBreweryObj)
+            
+    }
+    
+}
+});
+

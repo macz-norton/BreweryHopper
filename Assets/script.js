@@ -107,3 +107,43 @@ mainCardWebsiteEl = $(".mainCardWebsite")
 
 }
 renderMainCard()
+
+
+var APIkey = "AIzaSyCNMT79cyhTQf0GVQoNdOpOKcYsTL2jqdQ";
+
+// Remove lat and long when pulled in from other ajax function
+var latitude = 47.669087;
+var longitude = -122.299383;
+
+function getMap(APIkey, latitude, longitude) {
+    // var queryURL="https://www.google.com/maps/embed/v1/view?key=AIzaSyCNMT79cyhTQf0GVQoNdOpOKcYsTL2jqdQ&center=47.669087,-122.299383&zoom=18&maptype=satellite";
+    var queryURL="https://www.google.com/maps/embed/v1/place?key=" + APIkey + "&center=" + latitude + "," + longitude + "&zoom=18&maptype=satellite";
+        console.log(queryURL);
+
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    })
+    .then(function(response) {
+        console.log(response);
+        $("iframe").attr("src", queryURL);
+
+    })
+}
+
+function breweryLogo(website_url) {
+    var queryURL="https://logo.clearbit.com/" + website_url;
+        console.log(queryURL);
+
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    })
+    .then(function(response) {
+        console.log(response);
+        $("image").attr("src", queryURL);
+        $("image").attr("alt", "Brewery logo");
+
+    })
+
+}

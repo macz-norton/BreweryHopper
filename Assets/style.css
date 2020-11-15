@@ -1,8 +1,17 @@
+/* header {
+  background-color: rgb(94, 23, 23);
+  color: white;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-content: stretch; 
+ } */
+
 .top{
     margin-bottom: 50px;
-    height:200px;
+    height: auto;
     background-color: rgb(94, 23, 23);
-    padding-top: 30px;
+    padding: 40px;
   }
 
   .center {
@@ -75,3 +84,5 @@
     padding-top: 10px;
     text-align: center;
   }
+
+  

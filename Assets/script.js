@@ -5,6 +5,8 @@ var cityInputEl = $("#cityName")
     console.log(cityInputEl)
 
 //Elements of the main card
+var mainCardEl = $(".mainCard")
+    // console.log(mainCardEl)
 var mainCardNameEl = $(".mainCardName")
     // console.log(mainCardNameEl)
 var mainCardTypeEl = $(".mainCardType")
@@ -21,7 +23,6 @@ var searchButtonEl = $(".searchButton")
 //     console.log(breweryCollectionEl)  
 var breweryCollectionEl = $("#resultsList")
     console.log(breweryCollectionEl)
-
 
 //DECLARE global variables
 var breweriesArray=[]
@@ -90,60 +91,94 @@ getBreweries(cityCapitalized)
 });
 
 //RENDER main card
-function renderMainCard(){
+function renderMainCard(boop){
 
-$(mainCardNameEl).empty();
-$(mainCardNameEl).append()
+    // $(mainCardEl).empty();
+    // $(mainCardNameEl).append()
 
-mainCardTypeEl = $(".mainCardType")
 
-mainCardAddressEl = $(".mainCardAddress")
+    // $(mainCardNameEl).empty()
+    mainCardNameEl.append(($("<p>")).text(boop.breweryName).addClass("mainCardName"))
 
-mainCardPhoneEl = $(".mainCardPhone")
+    mainCardTypeEl.append(($("<p>")).text(boop.breweryType).addClass("mainCardType"))
+
+    mainCardAddressEl.append(($("<p>")).text(boop.breweryStreet).addClass("mainCardAddress"))
+
+    mainCardPhoneEl.append(($("<p>")).text(boop.breweryPhone).addClass("mainCardPhone"))
+        
+    mainCardWebsiteEl.append(($("<a>")).text(boop.breweryWebsite).addClass("mainCardWebsite"))
+
+    // var APIkey = "AIzaSyCNMT79cyhTQf0GVQoNdOpOKcYsTL2jqdQ";
+    // var latitude = boop.breweryLat;
+    // var longitude = boop.breweryLon;
+
+    // getMap(APIkey, latitude, longitude);
+
+//     function getMap(APIkeyVar, latVar, lonVar) {
+//         // var queryURL="https://www.google.com/maps/embed/v1/view?key=AIzaSyCNMT79cyhTQf0GVQoNdOpOKcYsTL2jqdQ&center=47.669159,-122.299126&zoom=18&maptype=satellite";
+//         var queryURL="https://www.google.com/maps/embed/v1/view?key=" + APIkeyVar + "&center=" + latVar + "," + lonVar + "&zoom=18&maptype=satellite";
+//             console.log(queryURL);
+
+//         $.ajax({
+//             url: queryURL,
+//             method: "GET"
+//         })
+//         .then(function(response) {
+//             console.log(response);
+//             $("iframe").attr("src", queryURL);
+
+//         })
+//     }
+
+//     breweryLogo(boop.breweryWebsite);
+
+//     function breweryLogo(url) {
+//         console.log(url);
+//         var queryURL="https://logo.clearbit.com/" + url;
+//             console.log(queryURL);
+
+//         $.ajax({
+//             url: queryURL,
+//             method: "GET"
+//         })
+//         .then(function(response) {
+//             console.log(response);
+//             $("image").attr("src", queryURL);
+//             $("image").attr("alt", "Brewery logo");
+
+//         })
+
+// }
+
+}
+
+// renderMainCard()
+
+
+breweryCollectionEl.on("click", function(event){
+    event.preventDefault();
+    event.stopPropagation();
+    var breweryToBeRenderedName = $(event.target).text()
+        console.log(breweryToBeRenderedName)
+    var renderedBreweryObj;
+        console.log(renderedBreweryObj)
+        
+
+    for (let i = 0; i < breweriesArray.length; i++) {
+        var element = breweriesArray[i].breweryName;
+            // console.log(element)
+            // console.log(breweriesArray)
+            // console.log(breweriesArray[i].breweryName)
+            if(element==breweryToBeRenderedName){
+                // console.log(element)
+                // console.log("THIS WORKS")
+                    
+                renderedBreweryObj =  breweriesArray[i] 
+                    // console.log(renderedBreweryObj)
+                renderMainCard(renderedBreweryObj)
+            
+    }
     
-mainCardWebsiteEl = $(".mainCardWebsite")
-
-
-
 }
-renderMainCard()
+});
 
-
-var APIkey = "AIzaSyCNMT79cyhTQf0GVQoNdOpOKcYsTL2jqdQ";
-
-// Remove lat and long when pulled in from other ajax function
-var latitude = 47.669087;
-var longitude = -122.299383;
-
-function getMap(APIkey, latitude, longitude) {
-    // var queryURL="https://www.google.com/maps/embed/v1/view?key=AIzaSyCNMT79cyhTQf0GVQoNdOpOKcYsTL2jqdQ&center=47.669087,-122.299383&zoom=18&maptype=satellite";
-    var queryURL="https://www.google.com/maps/embed/v1/place?key=" + APIkey + "&center=" + latitude + "," + longitude + "&zoom=18&maptype=satellite";
-        console.log(queryURL);
-
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    })
-    .then(function(response) {
-        console.log(response);
-        $("iframe").attr("src", queryURL);
-
-    })
-}
-
-function breweryLogo(website_url) {
-    var queryURL="https://logo.clearbit.com/" + website_url;
-        console.log(queryURL);
-
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    })
-    .then(function(response) {
-        console.log(response);
-        $("image").attr("src", queryURL);
-        $("image").attr("alt", "Brewery logo");
-
-    })
-
-}

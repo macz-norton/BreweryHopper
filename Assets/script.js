@@ -26,6 +26,7 @@ var breweryCollectionEl = $("#resultsList")
 //DECLARE global variables
 var breweriesArray=[]
 var breweryObj;
+var currentBrewery=""
 
 
 
@@ -87,3 +88,22 @@ searchButtonEl.on("click", function(event) {
 getBreweries(cityCapitalized)
     // return
 });
+
+//RENDER main card
+function renderMainCard(){
+
+$(mainCardNameEl).empty();
+$(mainCardNameEl).append()
+
+mainCardTypeEl = $(".mainCardType")
+
+mainCardAddressEl = $(".mainCardAddress")
+
+mainCardPhoneEl = $(".mainCardPhone")
+    
+mainCardWebsiteEl = $(".mainCardWebsite")
+
+
+
+}
+renderMainCard()

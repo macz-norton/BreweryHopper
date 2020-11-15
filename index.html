@@ -37,19 +37,29 @@
 <body>
 
 <!-- main navbar -->
-  <nav class = "top" >
-    <div class="nav-wrapper" >
-      <!-- <a href="#" class="brand-logo"></a> -->
-      <!-- <a href="#" id="breweryImg" src="brewery-stock-img.jpg" alt="beer taps" height="150px" width="150px"></a> -->
-      <h1>Brewery Finder</h1>
-      <!-- <a href="" class="brand-logo"><h3 class = >Brewery Finder<h3></a> -->
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="">Link</a></li>
-        <li><a href="">Link</a></li>
-        <li><a href="">Link</a></li>
-      </ul>
-    </div>
-  </nav>
+<!-- <header class="header">
+  <img id="breweryImg" class="hide-on-med-and-down" src="brewery-stock-img.jpg" alt="beer taps" height="200px" width="200px">
+  <h1>Brewery Finder</h1>
+  <img id="breweryImg" class="hide-on-med-and-down" src="brewery-stock-img.jpg" alt="beer taps" height="200px" width="200px">
+</header> -->
+
+<nav class = "top" >
+  <div class="nav-wrapper" >
+    <h1>BreweryHopper</h1>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li><a href="">Link</a></li>
+      <li><a href="">Link</a></li>
+      <li><a href="">Link</a></li>
+      <!-- <li><i class="material-icons">search</i><input id="search" type="search" required><label class="label-icon" for="search"></label></li> -->
+    </ul>
+    <!-- <form>
+      <div class="input-field">
+        
+      </div>
+    </form> -->
+  </div>
+</nav>
+ 
 
 <main>
   <div class="row">
@@ -100,14 +110,31 @@
 
     </div>
 
+    <!-- <div class="row">
+      <div class="col s12 m12 l4">
+        <div class="card large">
+          <div class="card-content">
+            <h3>Map</h3>
+          </div>
+          <div class="card-image">
+            <iframe width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAYBGmvbgN6d5el_gF5xJCHYLfZtQ9CH-8&q=Space+Needle,Seattle+WA" allowfullscreen> </iframe>
+          </div>
+        </div>
+      </div>
+    </div> -->
 
-    <div class="col s4">
+    <div class="row">
+    <div class="col s12 m12 l4">
       <div class="card Large">
         <div id = cardheader><h3>Map:</h3></div>
-        <iframe width="600" height="450" frameborder="0" style="border:0" allowfullscreen> </iframe>
+        <div id="mapCanvas">
+          <iframe width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAYBGmvbgN6d5el_gF5xJCHYLfZtQ9CH-8&q=Space+Needle,Seattle+WA" allowfullscreen> </iframe>
+        </div>
+
       </div>
     </div>            
-    
+    </div>
+
   </div>
 
 

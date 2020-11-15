@@ -2,32 +2,34 @@
 
 // var cityInputEl = "Seattle" //change this after you have an input to grab from!
 var cityInputEl = $("#cityName")
-    console.log(cityInputEl)
+    console.log(cityInputEl);
+var breweryInfoHeaderEl = $("#breweryInfo");
+    console.log(breweryInfoHeaderEl);
 
 //Elements of the main card
-var mainCardEl = $(".mainCard")
-    // console.log(mainCardEl)
-var mainCardNameEl = $(".mainCardName")
-    // console.log(mainCardNameEl)
-var mainCardTypeEl = $(".mainCardType")
-    // console.log(mainCardTypeEl)
-var mainCardAddressEl = $(".mainCardAddress")
-    // console.log(mainCardAddressEl)
-var mainCardPhoneEl = $(".mainCardPhone")
-    // console.log(mainCardPhoneEl) 
+var mainCardEl = $(".mainCard");
+    // console.log(mainCardEl);
+var mainCardNameEl = $(".mainCardName");
+    // console.log(mainCardNameEl);
+var mainCardTypeEl = $(".mainCardType");
+    // console.log(mainCardTypeEl);
+var mainCardAddressEl = $(".mainCardAddress");
+    // console.log(mainCardAddressEl);
+var mainCardPhoneEl = $(".mainCardPhone");
+    // console.log(mainCardPhoneEl);
 var mainCardWebsiteEl = $(".mainCardWebsite")
 
-var searchButtonEl = $(".searchButton")
-    console.log(searchButtonEl)
-// var breweryCollectionEl = $(".collection")
-//     console.log(breweryCollectionEl)  
-var breweryCollectionEl = $("#resultsList")
-    console.log(breweryCollectionEl)
+var searchButtonEl = $(".searchButton");
+    console.log(searchButtonEl);
+// var breweryCollectionEl = $(".collection");
+//     console.log(breweryCollectionEl)  ;
+var breweryCollectionEl = $("#resultsList");
+    console.log(breweryCollectionEl);
 
 //DECLARE global variables
-var breweriesArray=[]
+var breweriesArray=[];
 var breweryObj;
-var currentBrewery=""
+var currentBrewery="";
 
 
 
@@ -86,28 +88,45 @@ searchButtonEl.on("click", function(event) {
     var cityCapitalized = cityInputEl.val().trim();
         console.log(cityCapitalized)
 
+
 getBreweries(cityCapitalized)
-    // return
+    
 });
-//RENDER main card
+
+//DECLARE the function to RENDER the main card
 function renderMainCard(boop){
 //EMPTY the mainCardEl of any previously generated elements
     $(mainCardEl).empty();
-
+    $(breweryInfoHeaderEl).removeData();
 //APPEND the name to the `mainCardEl`
-    mainCardEl.append(($("<p>")).text("Name: " + boop.breweryName).addClass("mainCardName"))
+
+    // mainCardEl.append(($("<p>")).text("Name: " + boop.breweryName).addClass("mainCardName"))
+
+    $(breweryInfoHeaderEl).text(boop.breweryName)
 
 //APPEND the type to the `mainCardEl`
-    mainCardEl.append(($("<p>")).text("Type: " + boop.breweryType).addClass("mainCardType"))    
+    mainCardEl.append(($("<p>")).text("Brewery Type: " + boop.breweryType).addClass("mainCardType"))    
 
-//APPEND the address to the `mainCardEl`
+//APPEND the address to the `mainCardEl` IF there is an address available
+if(boop.breweryStreet == ""){
+    mainCardEl.append(($("<p>")).text("Address: Unavailable").addClass("mainCardAddress"))
+}else{
     mainCardEl.append(($("<p>")).text("Address: " + boop.breweryStreet+ ", " + boop.breweryCity).addClass("mainCardAddress"))
-
-//APPEND the phone to the `mainCardEl`
+}
+//APPEND the phone to the `mainCardEl` IF there is a phone available
+if(boop.breweryPhone == ""){
+    mainCardEl.append(($("<p>")).text("Phone: Unavailable").addClass("mainCardPhone"))
+}else{
     mainCardEl.append(($("<p>")).text("Phone: " + boop.breweryPhone).addClass("mainCardPhone"))
+}
 
-//APPEND the website to the `mainCardEl`  
-    mainCardEl.append(($("<a>")).text("Website: " + boop.breweryWebsite).addClass("mainCardWebsite"))
+//APPEND the website to the `mainCardEl` IF there is a website available 
+    if(boop.breweryWebsite == ""){
+        mainCardEl.append(($("<a>")).text("Website: Unavailable").addClass("mainCardWebsite")) 
+    }else{
+        mainCardEl.append(($("<a>")).text("Website: " + boop.breweryWebsite).addClass("mainCardWebsite m5"))    
+    }
+
 
 
     // var APIkey = "AIzaSyCNMT79cyhTQf0GVQoNdOpOKcYsTL2jqdQ";

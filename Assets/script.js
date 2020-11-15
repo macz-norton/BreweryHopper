@@ -24,7 +24,6 @@ var searchButtonEl = $(".searchButton")
 var breweryCollectionEl = $("#resultsList")
     console.log(breweryCollectionEl)
 
-
 //DECLARE global variables
 var breweriesArray=[]
 var breweryObj;
@@ -94,64 +93,67 @@ getBreweries(cityCapitalized)
 //RENDER main card
 function renderMainCard(boop){
 
-// $(mainCardEl).empty();
-// $(mainCardNameEl).append()
+    // $(mainCardEl).empty();
+    // $(mainCardNameEl).append()
 
 
-// $(mainCardNameEl).empty()
-mainCardNameEl.append(($("<p>")).text(boop.breweryName).addClass("mainCardName"))
+    // $(mainCardNameEl).empty()
+    mainCardNameEl.append(($("<p>")).text(boop.breweryName).addClass("mainCardName"))
 
-mainCardTypeEl.append(($("<p>")).text(boop.breweryType).addClass("mainCardType"))
+    mainCardTypeEl.append(($("<p>")).text(boop.breweryType).addClass("mainCardType"))
 
-mainCardAddressEl.append(($("<p>")).text(boop.breweryStreet).addClass("mainCardAddress"))
+    mainCardAddressEl.append(($("<p>")).text(boop.breweryStreet).addClass("mainCardAddress"))
 
-mainCardPhoneEl.append(($("<p>")).text(boop.breweryPhone).addClass("mainCardPhone"))
-    
-mainCardWebsiteEl.append(($("<a>")).text(boop.breweryWebsite).addClass("mainCardWebsite"))
+    mainCardPhoneEl.append(($("<p>")).text(boop.breweryPhone).addClass("mainCardPhone"))
+        
+    mainCardWebsiteEl.append(($("<a>")).text(boop.breweryWebsite).addClass("mainCardWebsite"))
+
+    // var APIkey = "AIzaSyCNMT79cyhTQf0GVQoNdOpOKcYsTL2jqdQ";
+    // var latitude = boop.breweryLat;
+    // var longitude = boop.breweryLon;
+
+    // getMap(APIkey, latitude, longitude);
+
+//     function getMap(APIkeyVar, latVar, lonVar) {
+//         // var queryURL="https://www.google.com/maps/embed/v1/view?key=AIzaSyCNMT79cyhTQf0GVQoNdOpOKcYsTL2jqdQ&center=47.669159,-122.299126&zoom=18&maptype=satellite";
+//         var queryURL="https://www.google.com/maps/embed/v1/view?key=" + APIkeyVar + "&center=" + latVar + "," + lonVar + "&zoom=18&maptype=satellite";
+//             console.log(queryURL);
+
+//         $.ajax({
+//             url: queryURL,
+//             method: "GET"
+//         })
+//         .then(function(response) {
+//             console.log(response);
+//             $("iframe").attr("src", queryURL);
+
+//         })
+//     }
+
+//     breweryLogo(boop.breweryWebsite);
+
+//     function breweryLogo(url) {
+//         console.log(url);
+//         var queryURL="https://logo.clearbit.com/" + url;
+//             console.log(queryURL);
+
+//         $.ajax({
+//             url: queryURL,
+//             method: "GET"
+//         })
+//         .then(function(response) {
+//             console.log(response);
+//             $("image").attr("src", queryURL);
+//             $("image").attr("alt", "Brewery logo");
+
+//         })
+
+// }
 
 }
 
 // renderMainCard()
 
-
-var APIkey = "AIzaSyCNMT79cyhTQf0GVQoNdOpOKcYsTL2jqdQ";
-
-// Remove lat and long when pulled in from other ajax function
-var latitude = 47.669087;
-var longitude = -122.299383;
-
-function getMap(APIkey, latitude, longitude) {
-    // var queryURL="https://www.google.com/maps/embed/v1/view?key=AIzaSyCNMT79cyhTQf0GVQoNdOpOKcYsTL2jqdQ&center=47.669087,-122.299383&zoom=18&maptype=satellite";
-    var queryURL="https://www.google.com/maps/embed/v1/place?key=" + APIkey + "&center=" + latitude + "," + longitude + "&zoom=18&maptype=satellite";
-        console.log(queryURL);
-
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    })
-    .then(function(response) {
-        console.log(response);
-        $("iframe").attr("src", queryURL);
-
-    })
-}
-
-function breweryLogo(website_url) {
-    var queryURL="https://logo.clearbit.com/" + website_url;
-        console.log(queryURL);
-
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    })
-    .then(function(response) {
-        console.log(response);
-        $("image").attr("src", queryURL);
-        $("image").attr("alt", "Brewery logo");
-
-    })
-
-}
 
 breweryCollectionEl.on("click", function(event){
     event.preventDefault();

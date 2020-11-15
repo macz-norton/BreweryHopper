@@ -21,6 +21,7 @@
 
   main {
     flex: 1 0 auto;
+    padding: 8px;
   }
 
   .nav-wrapper {
@@ -47,7 +48,12 @@
   }
 
   .searchButton {
-    background-color: rgb(6, 68, 6);
+    background-color: rgb(8, 130, 151);
+    color: white;
+  }
+
+  .collection-item:hover {
+    background-color: rgb(8, 130, 151);
     color: white;
   }
 
@@ -69,8 +75,3 @@
     padding-top: 10px;
     text-align: center;
   }
-
-
-
-
-

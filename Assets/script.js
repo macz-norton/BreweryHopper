@@ -89,24 +89,26 @@ searchButtonEl.on("click", function(event) {
 getBreweries(cityCapitalized)
     // return
 });
-
 //RENDER main card
 function renderMainCard(boop){
+//EMPTY the mainCardEl of any previously generated elements
+    $(mainCardEl).empty();
 
-    // $(mainCardEl).empty();
-    // $(mainCardNameEl).append()
+//APPEND the name to the `mainCardEl`
+    mainCardEl.append(($("<p>")).text("Name: " + boop.breweryName).addClass("mainCardName"))
 
+//APPEND the type to the `mainCardEl`
+    mainCardEl.append(($("<p>")).text("Type: " + boop.breweryType).addClass("mainCardType"))    
 
-    // $(mainCardNameEl).empty()
-    mainCardNameEl.append(($("<p>")).text(boop.breweryName).addClass("mainCardName"))
+//APPEND the address to the `mainCardEl`
+    mainCardEl.append(($("<p>")).text("Address: " + boop.breweryStreet+ ", " + boop.breweryCity).addClass("mainCardAddress"))
 
-    mainCardTypeEl.append(($("<p>")).text(boop.breweryType).addClass("mainCardType"))
+//APPEND the phone to the `mainCardEl`
+    mainCardEl.append(($("<p>")).text("Phone: " + boop.breweryPhone).addClass("mainCardPhone"))
 
-    mainCardAddressEl.append(($("<p>")).text(boop.breweryStreet).addClass("mainCardAddress"))
+//APPEND the website to the `mainCardEl`  
+    mainCardEl.append(($("<a>")).text("Website: " + boop.breweryWebsite).addClass("mainCardWebsite"))
 
-    mainCardPhoneEl.append(($("<p>")).text(boop.breweryPhone).addClass("mainCardPhone"))
-        
-    mainCardWebsiteEl.append(($("<a>")).text(boop.breweryWebsite).addClass("mainCardWebsite"))
 
     // var APIkey = "AIzaSyCNMT79cyhTQf0GVQoNdOpOKcYsTL2jqdQ";
     // var latitude = boop.breweryLat;

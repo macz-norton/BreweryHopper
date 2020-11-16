@@ -37,19 +37,19 @@ searchButtonEl.on("click", function(event) {
         console.log(this);
         console.log(breweryCollectionEl);
     
-    var cityCapitalized = cityInputEl.val().trim();
-        console.log(cityCapitalized)
+    var cityInputValue = cityInputEl.val().trim();
+        console.log(cityInputValue)
 
-getBreweries(cityCapitalized)
+getBreweries(cityInputValue)
 
 });
 
-//GET breweryStuff 
+//GET Brewery information from an AJAX call
 function getBreweries(boop) {
     //Clear the currentSearch of the previous search
     currentSearch=[]
         console.log(currentSearch)
-    console.log(breweryCollectionEl)
+    console.log(breweriesArray)
     
     var queryURL="https://api.openbrewerydb.org/breweries?by_city="+boop
         console.log(queryURL)
@@ -60,9 +60,11 @@ function getBreweries(boop) {
     })
     .then(function(response) {
         console.log(response)
-        // how many results are returned?
+        // ...and how many results are returned?
         console.log(response.length)
-        // console.log($(response).children())
+//Clear the breweriesArray of previous searches
+    breweriesArray=[]
+        console.log(breweriesArray)
 // LOOP through the results to store each brewery as an object in our `breweriesArray`
     for (let i = 0; i < response.length; i++) {
         breweryObj={
@@ -79,8 +81,10 @@ function getBreweries(boop) {
         currentSearch.push(response[i].name)
     };
     console.log(currentSearch)
+    console.log(breweriesArray)
     storeCurrentSearch(currentSearch)
-//PICK OPTION 1 OR OPTION 2 BELOW
+
+//PICK OPTION 1 OR OPTION 2 BELOW to render the `breweryCollectionEl`
 //OPTION 1 RENDER the `breweriesArray` to the `breweryCollectionEl` element
     // for (let i = 0; i < breweriesArray.length; i++) {
     //     var brewery = breweriesArray[i].breweryName;
@@ -89,16 +93,17 @@ function getBreweries(boop) {
     // }
 
 //OPTION 2 RENDER the `currentSearch` to the `breweryCollectionEl` element
+    breweryCollectionEl.empty()
     for (let i = 0; i < currentSearch.length; i++) {
         var brewery = currentSearch[i];
             // console.log(breweriesArray)
     $(breweryCollectionEl).append($("<p>").text(brewery).addClass("collection-item"));
     }
-
+    console.log(currentSearch)
     });
 }
 
-//STORE the last search to local
+// STORE the last search to local
 function storeCurrentSearch(boop){
     // localStorage.setItem(`${boop}`, JSON.stringify
     localStorage.setItem("currentSearchStored", JSON.stringify(boop));
@@ -109,12 +114,12 @@ function storeCurrentSearch(boop){
 //DECLARE the function to RENDER the main card
 function renderMainCard(boop){
 //EMPTY the mainCardEl of any previously generated elements
-    $(mainCardEl).empty();
-    $(breweryInfoHeaderEl).removeData();
+    mainCardEl.empty()
+
 //APPEND the name to the `mainCardEl`
 
     // mainCardEl.append(($("<p>")).text("Name: " + boop.breweryName).addClass("mainCardName"))
-
+    $(breweryInfoHeaderEl).removeData();
     $(breweryInfoHeaderEl).text(boop.breweryName)
 
 //APPEND the type to the `mainCardEl`
@@ -188,8 +193,9 @@ if(boop.breweryPhone == ""){
 
 // renderMainCard()
 
-
+//RENDER the main card with the brewery selected from the `breweryCollectionEl`
 breweryCollectionEl.on("click", function(event){
+
     event.preventDefault();
     event.stopPropagation();
     var breweryToBeRenderedName = $(event.target).text()

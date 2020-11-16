@@ -1,6 +1,5 @@
 //DECLARE DOM ELEMENTS
 
-// var cityInputEl = "Seattle" //change this after you have an input to grab from!
 var cityInputEl = $("#cityName")
     console.log(cityInputEl);
 var breweryInfoHeaderEl = $("#breweryInfo");
@@ -30,12 +29,17 @@ var breweryCollectionEl = $("#resultsList");
 var breweriesArray=[];
 var breweryObj;
 var currentBrewery="";
+var currentSearch=[]
 
 
 
 //GET breweryStuff 
 function getBreweries(boop) {
-    $(breweryCollectionEl).empty();
+    //Clear the currentSearch of the previous search
+    currentSearch=[]
+        console.log(currentSearch)
+    console.log(breweryCollectionEl)
+    
     var queryURL="https://api.openbrewerydb.org/breweries?by_city="+boop
         console.log(queryURL)
     //AJAX call
@@ -45,9 +49,11 @@ function getBreweries(boop) {
     })
     .then(function(response) {
         console.log(response)
-
+        // how many results are returned?
+        console.log(response.length)
+        // console.log($(response).children())
 // LOOP through the results to store each brewery as an object in our `breweriesArray`
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < response.length; i++) {
         breweryObj={
             breweryName: response[i].name,
             breweryStreet: response[i].street,
@@ -59,35 +65,40 @@ function getBreweries(boop) {
             breweryCity:response[i].city,   
         }
         breweriesArray.push(breweryObj)
+        currentSearch.push(response[i].name)
     };
+    console.log(currentSearch)
     $(breweryCollectionEl).empty();
-//RENDER the `breweriesArray` to the `breweryCollectionEl` element
-    for (let i = 0; i < breweriesArray.length; i++) {
-        var brewery = breweriesArray[i].breweryName;
+    
+//PICK OPTION 1 OR OPTION 2 BELOW
+//OPTION 1 RENDER the `breweriesArray` to the `breweryCollectionEl` element
+    // for (let i = 0; i < breweriesArray.length; i++) {
+    //     var brewery = breweriesArray[i].breweryName;
+    //         // console.log(breweriesArray)
+    // $(breweryCollectionEl).append($("<p>").text(brewery).addClass("collection-item"));
+    // }
+
+//OPTION 2 RENDER the `currentSearch` to the `breweryCollectionEl` element
+    for (let i = 0; i < currentSearch.length; i++) {
+        var brewery = currentSearch[i];
             // console.log(breweriesArray)
     $(breweryCollectionEl).append($("<p>").text(brewery).addClass("collection-item"));
     }
 
-
-});
+    });
 }
 
-// getBreweries();
-// console.log(breweriesArray)
+//SAVE the last search to local
+
 
 //CLICK FUNCTIONALITY
 searchButtonEl.on("click", function(event) {
-        console.log(breweryCollectionEl)
-    breweryCollectionEl.empty();
-        console.log(breweryCollectionEl)
     event.preventDefault();
         console.log(this);
-    
         console.log(breweryCollectionEl);
     
     var cityCapitalized = cityInputEl.val().trim();
         console.log(cityCapitalized)
-
 
 getBreweries(cityCapitalized)
     

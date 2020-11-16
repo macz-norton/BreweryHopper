@@ -31,14 +31,11 @@ var breweryObj;
 var currentBrewery="";
 var currentSearch=[]
 
-
-
-
-
 //START
 init();
-//CHECK if there is already a `currentSearch` in local storage; render it if its there.
+
 function init(){
+//CHECK if there are items already a `currentSearchStored` in local storage; render it if its there.    
     var storedSearchArray = localStorage.getItem("currentSearchStored");
 //IF storedSearchArray exists in local storage and isn't blank...
     if (storedSearchArray && storedSearchArray !== ""){
@@ -47,6 +44,15 @@ function init(){
     }
     //render the `currentSearch` to the `breweryCollectionEl`
     renderBreweryCollection()
+
+//CHECK if there are any items already in `storedBreweriesArray` and parse it to `breweriesArray` if there are
+    var retrievedBreweriesArray = localStorage.getItem("storedBreweriesArray");
+//IF retrievedBreweriesArray exists in local storage and isn't blank...
+    if (retrievedBreweriesArray && retrievedBreweriesArray !== ""){
+    //GET the data out and parse it to `breweriesArray`
+        breweriesArray=JSON.parse(retrievedBreweriesArray);
+    }
+
 }
 
 
@@ -101,8 +107,10 @@ function getBreweries(boop) {
         currentSearch.push(response[i].name)
     };
     console.log(currentSearch)
-    console.log(breweriesArray)
+    console.log(currentSearch)
+// Store both of the currentSearch and currentSearch to local by invoking the functions below 
     storeCurrentSearch(currentSearch)
+    storeBreweriesArray(breweriesArray)
 
 //PICK OPTION 1 OR OPTION 2 BELOW to render the `breweryCollectionEl`
 //OPTION 1 RENDER the `breweriesArray` to the `breweryCollectionEl` element
@@ -114,11 +122,16 @@ function getBreweries(boop) {
 
 //OPTION 2 RENDER the `currentSearch` to the `breweryCollectionEl` element
     breweryCollectionEl.empty()
+
+//THE CODE BELOW WAS REPLACED BY STORING AS renderBreweryCollection()
+
     // for (let i = 0; i < currentSearch.length; i++) {
     //     var brewery = currentSearch[i];
     //         // console.log(breweriesArray)
     // $(breweryCollectionEl).append($("<p>").text(brewery).addClass("collection-item"));
     // }
+//THE CODE ABOVE WAS REPLACED BY STORING AS renderBreweryCollection()
+
     renderBreweryCollection()
     console.log(currentSearch)
     });
@@ -126,8 +139,11 @@ function getBreweries(boop) {
 
 // STORE the last search to local
 function storeCurrentSearch(boop){
-    // localStorage.setItem(`${boop}`, JSON.stringify
     localStorage.setItem("currentSearchStored", JSON.stringify(boop));
+}
+// STORE the last `breweriesArray` to local 
+function storeBreweriesArray(boop){
+    localStorage.setItem("storedBreweriesArray", JSON.stringify(boop));
 }
 
 function renderBreweryCollection(){

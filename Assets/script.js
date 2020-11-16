@@ -31,6 +31,26 @@ var breweryObj;
 var currentBrewery="";
 var currentSearch=[]
 
+
+
+
+
+//START
+init();
+//CHECK if there is already a `currentSearch` in local storage; render it if its there.
+function init(){
+    var storedSearchArray = localStorage.getItem("currentSearchStored");
+//IF storedSearchArray exists in local storage and isn't blank...
+    if (storedSearchArray && storedSearchArray !== ""){
+    //GET the data out and parse it to `currentSearch`
+        currentSearch=JSON.parse(storedSearchArray);
+    }
+    //render the `currentSearch` to the `breweryCollectionEl`
+    renderBreweryCollection()
+}
+
+
+
 //CLICK FUNCTIONALITY of the Search Button
 searchButtonEl.on("click", function(event) {
     event.preventDefault();
@@ -94,11 +114,12 @@ function getBreweries(boop) {
 
 //OPTION 2 RENDER the `currentSearch` to the `breweryCollectionEl` element
     breweryCollectionEl.empty()
-    for (let i = 0; i < currentSearch.length; i++) {
-        var brewery = currentSearch[i];
-            // console.log(breweriesArray)
-    $(breweryCollectionEl).append($("<p>").text(brewery).addClass("collection-item"));
-    }
+    // for (let i = 0; i < currentSearch.length; i++) {
+    //     var brewery = currentSearch[i];
+    //         // console.log(breweriesArray)
+    // $(breweryCollectionEl).append($("<p>").text(brewery).addClass("collection-item"));
+    // }
+    renderBreweryCollection()
     console.log(currentSearch)
     });
 }
@@ -109,6 +130,13 @@ function storeCurrentSearch(boop){
     localStorage.setItem("currentSearchStored", JSON.stringify(boop));
 }
 
+function renderBreweryCollection(){
+    for (let i = 0; i < currentSearch.length; i++) {
+        var brewery = currentSearch[i];
+            // console.log(breweriesArray)
+    $(breweryCollectionEl).append($("<p>").text(brewery).addClass("collection-item"));
+    }
+}
 
 
 //DECLARE the function to RENDER the main card
@@ -117,7 +145,6 @@ function renderMainCard(boop){
     mainCardEl.empty()
 
 //APPEND the name to the `mainCardEl`
-
     // mainCardEl.append(($("<p>")).text("Name: " + boop.breweryName).addClass("mainCardName"))
     $(breweryInfoHeaderEl).removeData();
     $(breweryInfoHeaderEl).text(boop.breweryName)

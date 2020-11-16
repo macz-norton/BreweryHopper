@@ -31,7 +31,18 @@ var breweryObj;
 var currentBrewery="";
 var currentSearch=[]
 
+//CLICK FUNCTIONALITY of the Search Button
+searchButtonEl.on("click", function(event) {
+    event.preventDefault();
+        console.log(this);
+        console.log(breweryCollectionEl);
+    
+    var cityCapitalized = cityInputEl.val().trim();
+        console.log(cityCapitalized)
 
+getBreweries(cityCapitalized)
+
+});
 
 //GET breweryStuff 
 function getBreweries(boop) {
@@ -68,8 +79,7 @@ function getBreweries(boop) {
         currentSearch.push(response[i].name)
     };
     console.log(currentSearch)
-    $(breweryCollectionEl).empty();
-    
+    storeCurrentSearch(currentSearch)
 //PICK OPTION 1 OR OPTION 2 BELOW
 //OPTION 1 RENDER the `breweriesArray` to the `breweryCollectionEl` element
     // for (let i = 0; i < breweriesArray.length; i++) {
@@ -88,21 +98,13 @@ function getBreweries(boop) {
     });
 }
 
-//SAVE the last search to local
+//STORE the last search to local
+function storeCurrentSearch(boop){
+    // localStorage.setItem(`${boop}`, JSON.stringify
+    localStorage.setItem("currentSearchStored", JSON.stringify(boop));
+}
 
 
-//CLICK FUNCTIONALITY
-searchButtonEl.on("click", function(event) {
-    event.preventDefault();
-        console.log(this);
-        console.log(breweryCollectionEl);
-    
-    var cityCapitalized = cityInputEl.val().trim();
-        console.log(cityCapitalized)
-
-getBreweries(cityCapitalized)
-    
-});
 
 //DECLARE the function to RENDER the main card
 function renderMainCard(boop){

@@ -26,6 +26,9 @@ header {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  background-image: url("keg-image.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
   }
 
   main {
@@ -62,10 +65,9 @@ header {
     margin-left: 3px;
     
   }
-/* 
-  .collection-item {
-    background-color: rgb(94, 23, 23);
-    color: white;
+
+  /* .collection-item {
+    
   } */
 
   .collection-item:hover {
@@ -78,6 +80,10 @@ header {
     padding-top: 10px;
   }
 
+  h4 {
+    padding: 5px;
+  }
+
   .card-image {
     width: 60%;
     height: 60%;
@@ -87,21 +93,21 @@ header {
 
   }
 
-  #cardHeader h3 {
+  /* #cardHeader h3 {
     padding-top: 10px;
     text-align: center;
-  }
+  } */
 
   .mainCard {
     font-size: 18px;
-    background-color: teal;
+    background-color:  rgb(94, 23, 23);
     color: white;
-    line-height: 20px;
+    line-height: 25px;
 
   }
 
   .mainCard a {
-    text-decoration: none;
+    color: white;
   }
 
   

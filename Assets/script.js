@@ -59,10 +59,9 @@ var retrievedCurrentBrewery = localStorage.getItem("storedCurrentBrewery");
     if (retrievedCurrentBrewery && retrievedCurrentBrewery !== ""){
     //GET the data out and parse it to `breweriesArray`
     currentBrewery=JSON.parse(retrievedCurrentBrewery);
-        console.log(currentBrewery)
+        // console.log(currentBrewery)
     }
-    //DAN THIS IS WHERE YOU LEFT OFF. CALLING renderMainCard with the argument currentBrewery only renders undefined material. storedCurrentBrewery does work right now. i think you need to call the function within breweryCollectionEl instead, but how do i call that? right now its just triggered by a click? do i name the function within the click event?
-    // renderMainCard(currentBrewery)
+    initiateMainCard(currentBrewery);
 
 }
 
@@ -286,3 +285,26 @@ breweryCollectionEl.on("click", function(event){
 }
 });
 
+//COPY the `RENDER the main card` functionality above and give it a name
+function initiateMainCard(boop){
+    var breweryToBeRenderedName = boop 
+        console.log(breweryToBeRenderedName)
+    var renderedBreweryObj;
+        console.log(renderedBreweryObj)
+
+
+    for (let i = 0; i < breweriesArray.length; i++) {
+        var element = breweriesArray[i].breweryName;
+
+            if(element==breweryToBeRenderedName){
+
+                renderedBreweryObj =  breweriesArray[i] 
+                    // console.log(renderedBreweryObj)
+            //SET `currentBrewery` to the last item clicked
+                currentBrewery=breweryToBeRenderedName
+            //Store the last item clicked to the `currentBrewery`
+                storeCurrentBrewery(currentBrewery)
+                renderMainCard(renderedBreweryObj)
+        }
+    }
+}

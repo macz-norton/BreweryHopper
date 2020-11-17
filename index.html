@@ -37,46 +37,58 @@
 <body>
 
 <!-- main navbar -->
-<!-- <header class="header">
+<header class="header">
   <img id="breweryImg" class="hide-on-med-and-down" src="brewery-stock-img.jpg" alt="beer taps" height="200px" width="200px">
   <h1>Brewery Finder</h1>
   <img id="breweryImg" class="hide-on-med-and-down" src="brewery-stock-img.jpg" alt="beer taps" height="200px" width="200px">
-</header> -->
+</header>
 
-<nav class = "top" >
+<!-- <nav class = "top" >
   <div class="nav-wrapper" >
     <h1>BreweryHopper</h1>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       <li><a href="">Link</a></li>
       <li><a href="">Link</a></li>
-      <li><a href="">Link</a></li>
+      <li><a href="">Link</a></li> -->
       <!-- <li><i class="material-icons">search</i><input id="search" type="search" required><label class="label-icon" for="search"></label></li> -->
-    </ul>
+    <!-- </ul> -->
     <!-- <form>
       <div class="input-field">
         
       </div>
     </form> -->
-  </div>
-</nav>
+  <!-- </div>
+</nav> -->
  
 
 <main>
   <div class="row">
 
-    <div class="col s12  m12 l4">
+    <div class="col s12  m12 l3">
       <!-- secondary Navbar (Title for User Input fields) -->
-        <div class="nav-wrapper">
-          <h5 class = "left-align">Search by City:</h5>
+      <!-- <div class="file-path-wrapper">
+        <input id="cityName" type="text">
+        <label for="cityName_input"></label>
+      </div>
 
-          <input type="text" class="textField" id="cityName" name="cityName">
-          <button type="button" class="searchButton btn-large">&#x1F50E;</button>
-          <div class="col s12">
+      <div class="file-field input-field">
+        <button class="waves-effect waves-light btn-large" type="search" name="action"></button>
+      </div> -->
+
+        <div class="nav-wrapper">
+          <h4 class = "left-align">Search by City:</h4>
+
+          <div class="searchField">
+
+          <input type="text" class="textField col" id="cityName" name="cityName">
+          <button type="button" class="searchButton btn-small">&#x1F50E;</button>
+          <div class="col s12"></div>
+
           </div>
 
           <div class = "breweryResults">
 
-            <h3 class = "left-align">Results</h3>
+            <h4 class = "left-align">Results</h4>
               <div id="resultsList" class="collection"></div>
           </div>
 
@@ -85,7 +97,7 @@
   
     </div>
 
-    <div class="col s12 m12 l4">
+    <div class="col s12 m12 l5">
       <div class="card">
 
       <h2  id="breweryInfo" class="header">Brewery Info</h2>

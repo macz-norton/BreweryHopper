@@ -59,10 +59,9 @@ var retrievedCurrentBrewery = localStorage.getItem("storedCurrentBrewery");
     if (retrievedCurrentBrewery && retrievedCurrentBrewery !== ""){
     //GET the data out and parse it to `breweriesArray`
     currentBrewery=JSON.parse(retrievedCurrentBrewery);
-        console.log(currentBrewery)
+        // console.log(currentBrewery)
     }
-    //DAN THIS IS WHERE YOU LEFT OFF. CALLING renderMainCard with the argument currentBrewery only renders undefined material. storedCurrentBrewery does work right now. i think you need to call the function within breweryCollectionEl instead, but how do i call that? right now its just triggered by a click? do i name the function within the click event?
-    // renderMainCard(currentBrewery)
+    initiateMainCard(currentBrewery);
 
 }
 
@@ -184,23 +183,23 @@ function renderMainCard(boop){
     mainCardEl.append(($("<p>")).text("Brewery Type: " + boop.breweryType).addClass("mainCardType"))    
 
 //APPEND the address to the `mainCardEl` IF there is an address available
-if(boop.breweryStreet == ""){
-    mainCardEl.append(($("<p>")).text("Address: Unavailable").addClass("mainCardAddress"))
-}else{
-    mainCardEl.append(($("<p>")).text("Address: " + boop.breweryStreet+ ", " + boop.breweryCity).addClass("mainCardAddress"))
-}
+    if(boop.breweryStreet == ""){
+        mainCardEl.append(($("<p>")).text("Address: Unavailable").addClass("mainCardAddress"))
+    }else{
+        mainCardEl.append(($("<p>")).text("Address: " + boop.breweryStreet+ ", " + boop.breweryCity).addClass("mainCardAddress"))
+    }
 //APPEND the phone to the `mainCardEl` IF there is a phone available
-if(boop.breweryPhone == ""){
-    mainCardEl.append(($("<p>")).text("Phone: Unavailable").addClass("mainCardPhone"))
-}else{
-    mainCardEl.append(($("<p>")).text("Phone: " + boop.breweryPhone).addClass("mainCardPhone"))
-}
+    if(boop.breweryPhone == ""){
+        mainCardEl.append(($("<p>")).text("Phone: Unavailable").addClass("mainCardPhone"));
+    }else{
+        mainCardEl.append(($("<p>")).text("Phone: " + boop.breweryPhone).addClass("mainCardPhone"));
+    }
 
 //APPEND the website to the `mainCardEl` IF there is a website available 
     if(boop.breweryWebsite == ""){
-        mainCardEl.append(($("<a>")).text("Website: Unavailable").addClass("mainCardWebsite")) 
+        mainCardEl.append(($("<a>")).text("Website: Unavailable").addClass("mainCardWebsite"));
     }else{
-        mainCardEl.append(($("<a>")).text("Website: " + boop.breweryWebsite).addClass("mainCardWebsite m5"))    
+        mainCardEl.append(($("<a>")).text("Website: " + boop.breweryWebsite).addClass("mainCardWebsite m5"));
     }
 
 
@@ -256,11 +255,11 @@ breweryCollectionEl.on("click", function(event){
 
     event.preventDefault();
     event.stopPropagation();
-    // RESET `currentBrewery`
-    var breweryToBeRenderedName = $(event.target).text()
-        console.log(breweryToBeRenderedName)
+// RESET `currentBrewery`
+    var breweryToBeRenderedName = $(event.target).text();
+        console.log(breweryToBeRenderedName);
     var renderedBreweryObj;
-        console.log(renderedBreweryObj)
+        console.log(renderedBreweryObj);
         
 
     for (let i = 0; i < breweriesArray.length; i++) {
@@ -270,15 +269,13 @@ breweryCollectionEl.on("click", function(event){
             // console.log(breweriesArray[i].breweryName)
             if(element==breweryToBeRenderedName){
                 // console.log(element)
-                // console.log("THIS WORKS")
-                    
-                renderedBreweryObj =  breweriesArray[i] 
+                renderedBreweryObj =  breweriesArray[i] ;
                     // console.log(renderedBreweryObj)
             //SET `currentBrewery` to the last item clicked
-                currentBrewery=breweryToBeRenderedName
+                currentBrewery=breweryToBeRenderedName;
             //Store the last item clicked to the `currentBrewery`
-                storeCurrentBrewery(currentBrewery)
-                renderMainCard(renderedBreweryObj)
+                storeCurrentBrewery(currentBrewery);
+                renderMainCard(renderedBreweryObj);
                 
             
     }
@@ -286,3 +283,21 @@ breweryCollectionEl.on("click", function(event){
 }
 });
 
+//COPY the portion of the `RENDER the main card` functionality above to get the main card to render with the stored last saved brewery.
+function initiateMainCard(boop){
+    var breweryToBeRenderedName = boop;
+        console.log(breweryToBeRenderedName);
+    var renderedBreweryObj;
+        console.log(renderedBreweryObj);
+
+    for (let i = 0; i < breweriesArray.length; i++) {
+        var element = breweriesArray[i].breweryName;
+            if(element==breweryToBeRenderedName){
+                renderedBreweryObj =  breweriesArray[i];
+                currentBrewery=breweryToBeRenderedName;
+            //Store the last item clicked to the `currentBrewery`
+                storeCurrentBrewery(currentBrewery);
+                renderMainCard(renderedBreweryObj);
+        }
+    }
+}

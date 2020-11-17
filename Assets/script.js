@@ -19,11 +19,11 @@ var mainCardPhoneEl = $(".mainCardPhone");
 var mainCardWebsiteEl = $(".mainCardWebsite")
 
 var searchButtonEl = $(".searchButton");
-    console.log(searchButtonEl);
+    // console.log(searchButtonEl);
 // var breweryCollectionEl = $(".collection");
 //     console.log(breweryCollectionEl)  ;
 var breweryCollectionEl = $("#resultsList");
-    console.log(breweryCollectionEl);
+    // console.log(breweryCollectionEl);
 
 //DECLARE global variables
 var breweriesArray=[];

@@ -1,11 +1,11 @@
-/* header {
+header {
   background-color: rgb(94, 23, 23);
   color: white;
   padding: 15px;
   display: flex;
   justify-content: space-between;
   align-content: stretch; 
- } */
+ }
 
 .top{
     margin-bottom: 50px;
@@ -41,25 +41,32 @@
     display: inline;
   }
 
-  .nav li {
+  /* .nav li {
     display: inline;
     margin: 15px;
     padding: 15px;
     font-size: 15px;
     width: auto;
-  }
+  } */
 
   h1 {
     font-family: 'Berkshire Swash', cursive;
-    font-size: 70px;
-    padding-left: 35px;
+    font-size: 150px;
     display: inline;
+    
   }
 
   .searchButton {
     background-color: rgb(8, 130, 151);
     color: white;
+    margin-left: 3px;
+    
   }
+/* 
+  .collection-item {
+    background-color: rgb(94, 23, 23);
+    color: white;
+  } */
 
   .collection-item:hover {
     background-color: rgb(8, 130, 151);
@@ -83,6 +90,18 @@
   #cardHeader h3 {
     padding-top: 10px;
     text-align: center;
+  }
+
+  .mainCard {
+    font-size: 18px;
+    background-color: teal;
+    color: white;
+    line-height: 20px;
+
+  }
+
+  .mainCard a {
+    text-decoration: none;
   }
 
   

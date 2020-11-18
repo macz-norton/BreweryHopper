@@ -1,6 +1,8 @@
 // Declare DOM elements
 var cityInputEl = $("#cityName")
 var breweryInfoHeaderEl = $("#breweryInfo");
+var resultsHeaderEl = $(".resultsHeader");
+    console.log(resultsHeaderEl);
 
 // Elements of the main card
 var mainCardEl = $(".mainCard");
@@ -20,7 +22,8 @@ var breweryCollectionEl = $("#resultsList");
 var breweriesArray = [];
 var breweryObj;
 var currentBrewery = "";
-var currentSearch = []
+var currentSearch = [];
+var currentCity="";
 
 //START
 init();
@@ -54,6 +57,18 @@ function init(){
     }
     initiateMainCard(currentBrewery);
 
+    //CHECK if there is a storedCity any items already in `stored` and parse it to `currentCity` if there are
+    var retrievedStoredCity = localStorage.getItem("storedCurrentCity");
+        console.log(retrievedStoredCity)
+    //IF retrievedStoredCity exists in local storage and isn't blank...
+    if (retrievedStoredCity && retrievedStoredCity !== ""){
+    //GET the data out and parse it to `currentCity`
+    currentCity=JSON.parse(retrievedStoredCity);
+        console.log(currentCity)
+        renderCity(currentCity)
+    }
+    
+
 }
 
 //CLICK FUNCTIONALITY of the Search Button
@@ -62,10 +77,24 @@ searchButtonEl.on("click", function(event) {
     event.preventDefault();
 
     var cityInputValue = cityInputEl.val().trim();
-
+    
     getBreweries(cityInputValue)
-
+//CLEAR the currentCity variable of previous input
+    currentCity = ""
+//ASSIGN the `currentCity` top the new selection `cityInputValue`
+    currentCity = cityInputValue;
+        console.log(currentCity);
+    storeCurrentCity(cityInputValue);
+    renderCity(cityInputValue);
+        console.log(cityInputValue);
 });
+//DISPLAY the city searched
+
+//DISPLAY the city name to the search panel
+function renderCity(boop){
+    console.log(resultsHeaderEl.text())
+    resultsHeaderEl.text("Results for: " +boop.toUpperCase())
+}
 
 //GET Brewery information from an AJAX call
 function getBreweries(boop) {
@@ -134,6 +163,10 @@ function storeBreweriesArray(boop){
 // STORE the last `currentBrewery` to local 
 function storeCurrentBrewery(boop){
     localStorage.setItem("storedCurrentBrewery", JSON.stringify(boop));
+}
+// STORE the last `currentCity` to local 
+function storeCurrentCity(boop){
+    localStorage.setItem("storedCurrentCity", JSON.stringify(boop));
 }
 
 function renderBreweryCollection(){

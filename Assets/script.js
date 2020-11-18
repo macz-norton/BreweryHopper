@@ -21,7 +21,9 @@ var breweryCollectionEl = $("#resultsList");
 // Declare global variables
 var breweriesArray = [];
 var breweryObj;
+    console.log(breweryObj)
 var currentBrewery = "";
+console.log(currentBrewery)
 var currentSearch = [];
 var currentCity="";
 
@@ -181,6 +183,7 @@ function renderBreweryCollection(){
 function renderMainCard(boop){
 //EMPTY the mainCardEl of any previously generated elements
     mainCardEl.empty()
+    console.log(boop)
 
 //APPEND the name to the `mainCardEl`
     // mainCardEl.append(($("<p>")).text("Name: " + boop.breweryName).addClass("mainCardName"))
@@ -251,7 +254,7 @@ function renderMainCard(boop){
 //         })
 
 // }
-
+ 
 }
 
     // var category = [Any, Miscellaneous, Programming, Dark, Pun, Spooky, Christmas];
@@ -349,3 +352,21 @@ function initiateMainCard(boop){
         }
     }
 }
+
+console.log(currentBrewery)
+//HERE FUNCTIONALITY
+var platform = new H.service.Platform({
+    'apikey': 'oyplKZqjZWkRlK7jD7wKXERHDj0wnsUcAEKdHsCa45Q'
+});
+
+  // Obtain the default map types from the platform object:
+var defaultLayers = platform.createDefaultLayers();
+
+// Instantiate (and display) a map object:
+var map = new H.Map(
+    document.getElementById('mapContainer'),
+    defaultLayers.vector.normal.map,
+    {
+    zoom: 17,
+    center: { lat: 47.66, lng: -122.37 }
+    });

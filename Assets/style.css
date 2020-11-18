@@ -1,58 +1,71 @@
-header {
-  background-color: rgb(94, 23, 23);
-  color: white;
-  padding: 15px;
-  display: flex;
-  justify-content: space-between;
-  align-content: stretch; 
- }
-
-.top{
-    margin-bottom: 50px;
-    height: auto;
-    background-color: rgb(94, 23, 23);
-    padding: 40px;
-  }
-
-  .center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-  height:100%
-  }
-
-  body {
+body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
   background-image: url("keg-image.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  }
+}
 
-  main {
+header {
+  background-color: rgb(94, 23, 23);
+  color: white;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-content: stretch;  
+}
+
+main {
     flex: 1 0 auto;
     padding: 8px;
+}
+
+h1 {
+  font-family: 'Berkshire Swash', cursive;
+  font-size: 150px;
+  display: inline;  
+}
+
+h4 {
+  padding: 5px;
+}
+
+.top {
+    margin-bottom: 50px;
+    height: auto;
+    background-color: rgb(94, 23, 23);
+    padding: 40px;
   }
 
-  .nav-wrapper {
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  height:100%
+}
+
+.nav-wrapper {
     padding: 10px;
-  }
+}
 
-  #breweryImg {
+#breweryImg {
     display: inline;
     border: 3px outset rgb(214, 212, 212);
     box-shadow: 20px 20px 100px 5px rgb(59, 42, 42);
   }
 
-  /* .nav li {
+
+
+/* .nav li {
     display: inline;
     margin: 15px;
     padding: 15px;
     font-size: 15px;
     width: auto;
-  } */
+} */
+
 
   h1 {
     font-family: 'Berkshire Swash', cursive;
@@ -62,55 +75,51 @@ header {
     
   }
 
-  .searchButton {
+.searchButton {
+
     background-color: rgb(8, 130, 151);
     color: white;
     margin-left: 3px;
-    
-  }
+}
 
-  /* .collection-item {
+/* .collection-item {
     
-  } */
+} */
 
-  .collection-item:hover {
+.collection-item:hover {
     background-color: rgb(8, 130, 151);
     color: white;
-  }
+}
 
-  #breweryInfo {
+#breweryInfo {
     text-align: center;
-    /* padding-top: 10px; */
-  }
+    padding-top: 10px;
+}
 
-  h4 {
-    padding: 5px;
-  }
 
-  .card-image {
+.card-image {
     width: 60%;
     height: 60%;
     margin-left: auto;
     margin-right: auto;
     padding: 10px;
+}
 
-  }
-
-  /* #cardHeader h3 {
+/* #cardHeader h3 {
     padding-top: 10px;
     text-align: center;
-  } */
+} */
 
-  .mainCard {
+.mainCard {
     font-size: 18px;
     background-color:  rgb(94, 23, 23);
     color: white;
     line-height: 25px;
+}
 
-  }
-
-  .mainCard a {
+.mainCard a {
     color: white;
+
   }
 
   @media (max-width: 400px) {
@@ -138,3 +147,5 @@ header {
     margin-top: 35px;
   }
   
+}
+

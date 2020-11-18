@@ -21,27 +21,36 @@
 <!-- THIS is the JQuery link -->
       <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
-<!-- THIS is the MomentJS link -->
-      <script
-        type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"
-      ></script>
 
-<!-- THIS is the CSS Link -->
-    <link rel="stylesheet" href="./Assets/style.css" />
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brewery Hopper</title>
 
-<!-- Link to Google Font Berkshire Swash-->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap" rel="stylesheet">
+  <!-- CSS Reset Link -->
+  <link rel="stylesheet" href="./Assets/reset.css" />
+  <!-- Google Icon Font-->
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Materialize CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <!-- Link to Google Font Berkshire Swash-->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap" rel="stylesheet">
+  <!-- CSS stylesheet -->
+  <link rel="stylesheet" href="./Assets/style.css" />
 
 </head>
+
 <body>
 
-<!-- main navbar -->
+<!-- Main navbar -->
 <header class="header">
+
   <img id="breweryImg" class="hide-on-med-and-down" src="brewery-stock-img.jpg" alt="beer taps" height="200px" width="200px">
-  <h1>Brewery Finder</h1>
+  <h1>Brewery Hopper</h1>
   <img id="breweryImg" class="hide-on-med-and-down" src="brewery-stock-img.jpg" alt="beer taps" height="200px" width="200px">
+
 </header>
 
 <!-- <nav class = "top" >
@@ -60,9 +69,9 @@
     </form> -->
   <!-- </div>
 </nav> -->
- 
 
 <main>
+
   <div class="row">
 
     <div class="col s12  m12 l3">
@@ -80,67 +89,58 @@
           <h4 class = "left-align">Search by City:</h4>
 
           <div class="searchField">
-
-          <input type="text" class="textField col" id="cityName" name="cityName">
-          <button type="button" class="searchButton btn-small">&#x1F50E;</button>
-          <div class="col s12"></div>
-
+            <input type="text" class="textField col" id="cityName" name="cityName">
+            <button type="button" class="searchButton btn-small">&#x1F50E;</button>
+            <div class="col s12"></div>
           </div>
 
           <div class = "breweryResults">
-
-            <h4 class = "left-align">Results</h4>
-              <div id="resultsList" class="collection"></div>
+            <h4 class = "left-align resultsHeader">Results</h4>
+            <div id="resultsList" class="collection"></div>
           </div>
-
         </div>
-
-  
     </div>
 
     <div class="col s12 m12 l5">
       <div class="card">
-
-      <h2  id="breweryInfo" class="header">Brewery Info</h2>
-      <div class="card vertical">
-        <div class="card-image">
-          <img src="https://static1.squarespace.com/static/58a21eec4402433b61d2ecc7/t/5d23c0f19df4a8000193692b/1603047719031/?format=1500w">
-        </div>
-        <br>
-        <div class="card-stacked">
-          <div class="card-content mainCard">
-            <!-- <p class="mainCardName">Name:</p><br> -->
-            <!-- <p class="mainCardType">Type:</p><br> -->
-            <!-- <p class="mainCardAddress">Address:</p><br> -->
-            <!-- <p class="mainCardPhone">Phone:</p><br> -->
-            <!-- <a class="mainCardWebsite" href="#">Website:</a> -->
+        <h2  id="breweryInfo" class="header">Brewery Info</h2>
+        <div class="card vertical">
+          <div class="card-image">
+            <img src="https://static1.squarespace.com/static/58a21eec4402433b61d2ecc7/t/5d23c0f19df4a8000193692b/1603047719031/?format=1500w">
           </div>
-
+          <br>
+          <div class="card-stacked">
+            <div class="card-content mainCard"></div>
+          </div>
         </div>
-
       </div>
-      </div>
-
     </div>
 
     <div class="row">
     <div class="col s12 m12 l4">
       <div class="card Large">
         <div id="mapCanvas">
-          <iframe width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAYBGmvbgN6d5el_gF5xJCHYLfZtQ9CH-8&q=Space+Needle,Seattle+WA" allowfullscreen> </iframe>
+
+      <div class="col s12 m12 l4">
+        <div class="card Large">
+          <div id = cardheader><h3>Joke for the Bartender:</h3></div>
+            <div id="joke"></div>
         </div>
-
-      </div>
-    </div>            
+      </div>            
     </div>
-
   </div>
 
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
-  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <!-- THIS is the Script link -->
+  <!-- Moment.js-->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+
+  <!-- JavaScript-->
   <script type="text/javascript" src="./Assets/script.js"></script>
 
 </main>
+
 </body>
+
 </html>

@@ -1,43 +1,37 @@
-//DECLARE DOM ELEMENTS
-
+// Declare DOM elements
 var cityInputEl = $("#cityName")
-    console.log(cityInputEl);
 var breweryInfoHeaderEl = $("#breweryInfo");
-    console.log(breweryInfoHeaderEl);
+var resultsHeaderEl = $(".resultsHeader");
+    console.log(resultsHeaderEl);
 
-//Elements of the main card
+// Elements of the main card
 var mainCardEl = $(".mainCard");
-    // console.log(mainCardEl);
 var mainCardNameEl = $(".mainCardName");
-    // console.log(mainCardNameEl);
 var mainCardTypeEl = $(".mainCardType");
-    // console.log(mainCardTypeEl);
 var mainCardAddressEl = $(".mainCardAddress");
-    // console.log(mainCardAddressEl);
 var mainCardPhoneEl = $(".mainCardPhone");
-    // console.log(mainCardPhoneEl);
-var mainCardWebsiteEl = $(".mainCardWebsite")
+var mainCardWebsiteEl = $(".mainCardWebsite");
+
+// Elements of the joke card
+var jokeEl = $("#joke");
 
 var searchButtonEl = $(".searchButton");
-    console.log(searchButtonEl);
-// var breweryCollectionEl = $(".collection");
-//     console.log(breweryCollectionEl)  ;
 var breweryCollectionEl = $("#resultsList");
-    console.log(breweryCollectionEl);
 
-//DECLARE global variables
-var breweriesArray=[];
+// Declare global variables
+var breweriesArray = [];
 var breweryObj;
-var currentBrewery="";
-var currentSearch=[]
+var currentBrewery = "";
+var currentSearch = [];
+var currentCity="";
 
 //START
 init();
 
 function init(){
-//CHECK if there are items already a `currentSearchStored` in local storage; render it if its there.    
+    //CHECK if there are items already a `currentSearchStored` in local storage; render it if its there.    
     var storedSearchArray = localStorage.getItem("currentSearchStored");
-//IF storedSearchArray exists in local storage and isn't blank...
+    //IF storedSearchArray exists in local storage and isn't blank...
     if (storedSearchArray && storedSearchArray !== ""){
     //GET the data out and parse it to `currentSearch`
         currentSearch=JSON.parse(storedSearchArray);
@@ -45,17 +39,17 @@ function init(){
     //render the `currentSearch` to the `breweryCollectionEl`
     renderBreweryCollection()
 
-//CHECK if there are any items already in `storedBreweriesArray` and parse it to `breweriesArray` if there are
+    //CHECK if there are any items already in `storedBreweriesArray` and parse it to `breweriesArray` if there are
     var retrievedBreweriesArray = localStorage.getItem("storedBreweriesArray");
-//IF retrievedBreweriesArray exists in local storage and isn't blank...
+    //IF retrievedBreweriesArray exists in local storage and isn't blank...
     if (retrievedBreweriesArray && retrievedBreweriesArray !== ""){
     //GET the data out and parse it to `breweriesArray`
         breweriesArray=JSON.parse(retrievedBreweriesArray);
     }
 
-//CHECK if there are any items already in `stored` and parse it to `breweriesArray` if there are
-var retrievedCurrentBrewery = localStorage.getItem("storedCurrentBrewery");
-//IF retrievedCurrentBrewery exists in local storage and isn't blank...
+    //CHECK if there are any items already in `stored` and parse it to `breweriesArray` if there are
+    var retrievedCurrentBrewery = localStorage.getItem("storedCurrentBrewery");
+    //IF retrievedCurrentBrewery exists in local storage and isn't blank...
     if (retrievedCurrentBrewery && retrievedCurrentBrewery !== ""){
     //GET the data out and parse it to `breweriesArray`
     currentBrewery=JSON.parse(retrievedCurrentBrewery);
@@ -63,44 +57,57 @@ var retrievedCurrentBrewery = localStorage.getItem("storedCurrentBrewery");
     }
     initiateMainCard(currentBrewery);
 
+    //CHECK if there is a storedCity any items already in `stored` and parse it to `currentCity` if there are
+    var retrievedStoredCity = localStorage.getItem("storedCurrentCity");
+        console.log(retrievedStoredCity)
+    //IF retrievedStoredCity exists in local storage and isn't blank...
+    if (retrievedStoredCity && retrievedStoredCity !== ""){
+    //GET the data out and parse it to `currentCity`
+    currentCity=JSON.parse(retrievedStoredCity);
+        console.log(currentCity)
+        renderCity(currentCity)
+    }
+    
+
 }
-
-
 
 //CLICK FUNCTIONALITY of the Search Button
 searchButtonEl.on("click", function(event) {
-    event.preventDefault();
-        console.log(this);
-        console.log(breweryCollectionEl);
     
+    event.preventDefault();
+
     var cityInputValue = cityInputEl.val().trim();
-        console.log(cityInputValue)
-
-getBreweries(cityInputValue)
-
+    
+    getBreweries(cityInputValue)
+//CLEAR the currentCity variable of previous input
+    currentCity = ""
+//ASSIGN the `currentCity` top the new selection `cityInputValue`
+    currentCity = cityInputValue;
+        console.log(currentCity);
+    storeCurrentCity(cityInputValue);
+    renderCity(cityInputValue);
+        console.log(cityInputValue);
 });
+//DISPLAY the city searched
+
+//DISPLAY the city name to the search panel
+function renderCity(boop){
+    console.log(resultsHeaderEl.text())
+    resultsHeaderEl.text("Results for: " +boop.toUpperCase())
+}
 
 //GET Brewery information from an AJAX call
 function getBreweries(boop) {
     //Clear the currentSearch of the previous search
-    currentSearch=[]
-        console.log(currentSearch)
-    console.log(breweriesArray)
-    
+    currentSearch = []
     var queryURL="https://api.openbrewerydb.org/breweries?by_city="+boop
-        console.log(queryURL)
     //AJAX call
     $.ajax({
         url: queryURL,
         method: "GET"
     })
     .then(function(response) {
-        console.log(response)
-        // ...and how many results are returned?
-        console.log(response.length)
-//Clear the breweriesArray of previous searches
-    breweriesArray=[]
-        console.log(breweriesArray)
+        breweriesArray = []
 // LOOP through the results to store each brewery as an object in our `breweriesArray`
     for (let i = 0; i < response.length; i++) {
         breweryObj={
@@ -116,9 +123,8 @@ function getBreweries(boop) {
         breweriesArray.push(breweryObj)
         currentSearch.push(response[i].name)
     };
-    console.log(currentSearch)
-    console.log(currentSearch)
-// Store both of the currentSearch and currentSearch to local by invoking the functions below 
+
+    // Store both of the currentSearch and currentSearch to local by invoking the functions below 
     storeCurrentSearch(currentSearch)
     storeBreweriesArray(breweriesArray)
 
@@ -143,7 +149,6 @@ function getBreweries(boop) {
 //THE CODE ABOVE WAS REPLACED BY STORING AS renderBreweryCollection()
 
     renderBreweryCollection()
-    console.log(currentSearch)
     });
 }
 
@@ -159,6 +164,10 @@ function storeBreweriesArray(boop){
 function storeCurrentBrewery(boop){
     localStorage.setItem("storedCurrentBrewery", JSON.stringify(boop));
 }
+// STORE the last `currentCity` to local 
+function storeCurrentCity(boop){
+    localStorage.setItem("storedCurrentCity", JSON.stringify(boop));
+}
 
 function renderBreweryCollection(){
     for (let i = 0; i < currentSearch.length; i++) {
@@ -167,7 +176,6 @@ function renderBreweryCollection(){
     $(breweryCollectionEl).append($("<p>").text(brewery).addClass("collection-item"));
     }
 }
-
 
 //DECLARE the function to RENDER the main card
 function renderMainCard(boop){
@@ -201,8 +209,6 @@ function renderMainCard(boop){
     }else{
         mainCardEl.append(($("<a>")).text("Website: " + boop.breweryWebsite).addClass("mainCardWebsite m5"));
     }
-
-
 
     // var APIkey = "AIzaSyCNMT79cyhTQf0GVQoNdOpOKcYsTL2jqdQ";
     // var latitude = boop.breweryLat;
@@ -247,6 +253,48 @@ function renderMainCard(boop){
 // }
 
 }
+
+    // var category = [Any, Miscellaneous, Programming, Dark, Pun, Spooky, Christmas];
+
+var category = "Any";
+
+function getJoke() {
+    var queryURL =  "https://sv443.net/jokeapi/v2/joke/" + category + "?lang=en?amount=1?type=twopart?blacklistFlags=nsfw,religious,political,racist,sexist";
+    console.log(queryURL);
+
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    })
+    .then(function(response) {
+        console.log(response);
+        console.log(response.setup);
+
+        if(response.flags.racist == true) {
+            jokeEl.append(($("<p>")).text("We're outta jokes!").addClass("setup"))
+        } else {
+            jokeEl.append(($("<p>")).text(response.setup).addClass("setup"));
+        }
+
+        if(response.flags.racist == true) {
+            jokeEl.append(($("<p>")).text("Search again!").addClass("setup"))
+        } else {
+            jokeEl.append(($("<p>")).text(response.delivery).addClass("setup"));
+        }
+    })
+}
+
+searchButtonEl.on("click", function(event) {
+    
+    event.preventDefault();
+
+    // var jokeCategoryValue = jokeInputEl.val().trim();
+
+    getJoke();
+
+});
+
+
 
 // renderMainCard()
 

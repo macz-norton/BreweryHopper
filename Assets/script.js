@@ -11,7 +11,7 @@ var mainCardPhoneEl = $(".mainCardPhone");
 var mainCardWebsiteEl = $(".mainCardWebsite");
 
 // Elements of the joke card
-var jokeEl = $(".joke");
+var jokeEl = $("#joke");
 
 var searchButtonEl = $(".searchButton");
 var breweryCollectionEl = $("#resultsList");
@@ -226,8 +226,8 @@ function renderMainCard(boop){
 var category = "Any";
 
 function getJoke() {
-    var queryURL =  "https://sv443.net/jokeapi/v2/joke/" + category + "?lang=en?amount=1?type=twopart?blacklistFlags=nsfw,religious,political,racist,sexist"
-    console.log(queryURL)
+    var queryURL =  "https://sv443.net/jokeapi/v2/joke/" + category + "?lang=en?amount=1?type=twopart?blacklistFlags=nsfw,religious,political,racist,sexist";
+    console.log(queryURL);
 
     $.ajax({
         url: queryURL,
@@ -237,14 +237,31 @@ function getJoke() {
         console.log(response);
         console.log(response.setup);
 
-        jokeEl.append(($("<p>")).text(response.setup).addClass("setup"));
-        jokeEl.append(($("<p>")).text(response.setup).addClass("delivery"));
+        if(response.flags.racist == true) {
+            jokeEl.append(($("<p>")).text("We're outta jokes!").addClass("setup"))
+        } else {
+            jokeEl.append(($("<p>")).text(response.setup).addClass("setup"));
+        }
 
+        if(response.flags.racist == true) {
+            jokeEl.append(($("<p>")).text("Search again!").addClass("setup"))
+        } else {
+            jokeEl.append(($("<p>")).text(response.delivery).addClass("setup"));
+        }
     })
-
 }
 
-getJoke();
+searchButtonEl.on("click", function(event) {
+    
+    event.preventDefault();
+
+    // var jokeCategoryValue = jokeInputEl.val().trim();
+
+    getJoke();
+
+});
+
+
 
 // renderMainCard()
 

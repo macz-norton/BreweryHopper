@@ -362,7 +362,7 @@ function initiateMainCard(boop){
 }
 
 console.log(currentBrewery)
-//HERE FUNCTIONALITY
+//HERE FUNCTIONALITY TO CREATE A MAP
 function generateMap(boopLat,boopLon){
     //Clear the previous map's contents
     $("#mapContainer").empty();
@@ -380,8 +380,38 @@ var platform = new H.service.Platform({
         defaultLayers.vector.normal.map,
         {
         zoom: 17,
-        // center: { lat: 47.66, lng: -122.37 }
         center: { lat: boopLat, lng: boopLon }
         });
         console.log(map)
+
+//HERE functionality to create the marker
+    // Define a variable holding SVG mark-up that defines an icon image:
+    // OPTION 1 START
+    var svgMarkup = '<svg width="24" height="24" ' +
+        'xmlns="http://www.w3.org/2000/svg">' +
+        '<rect stroke="white" fill="#1b468d" x="1" y="1" width="22" ' +
+        'height="22" /><text x="12" y="18" font-size="12pt" ' +
+        'font-family="Arial" font-weight="bold" text-anchor="middle" ' +
+        'fill="white">B</text></svg>';
+
+    // Create an icon, an object holding the latitude and longitude, and a marker:
+    var icon = new H.map.Icon(svgMarkup),
+        coords = {lat: boopLat, lng: boopLon},
+        marker = new H.map.Marker(coords, {icon: icon});
+
+    // Add the marker to the map and center the map at the location of the marker:
+    map.addObject(marker);
+    map.setCenter(coords);
+    // OPTION 1 FINISH
+
+    // //OPTION 2 START
+    // // Create a marker icon from an image URL:
+    // var icon = new H.map.Icon("./Images/beerIcon2.png");
+
+    // // Create a marker using the previously instantiated icon:
+    // var marker = new H.map.Marker({ lat: boopLat, lng: boopLon }, { icon: icon });
+
+    // // Add the marker to the map:
+    // map.addObject(marker);
+    // //OPTION 2 END
 }

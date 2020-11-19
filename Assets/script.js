@@ -116,8 +116,8 @@ function getBreweries(boop) {
     .then(function(response) {
         breweriesArray = []
 // LOOP through the results to store each brewery as an object in our `breweriesArray`
-    for (let i = 0; i < 5; i++) {
-    // for (let i = 0; i < response.length; i++) {
+
+    for (let i = 0; i < response.length; i++) {
         breweryObj={
             breweryName: response[i].name,
             breweryStreet: response[i].street,
@@ -136,28 +136,11 @@ function getBreweries(boop) {
 
     // Store both of the currentSearch and currentSearch to local by invoking the functions below 
     storeCurrentSearch(currentSearch)
-    console.log(currentSearch)
+        // console.log(currentSearch)
     storeBreweriesArray(breweriesArray)
-    console.log(breweriesArray)
-//PICK OPTION 1 OR OPTION 2 BELOW to render the `breweryCollectionEl`
-//OPTION 1 RENDER the `breweriesArray` to the `breweryCollectionEl` element
-    // for (let i = 0; i < breweriesArray.length; i++) {
-    //     var brewery = breweriesArray[i].breweryName;
-    //         // console.log(breweriesArray)
-    // $(breweryCollectionEl).append($("<p>").text(brewery).addClass("collection-item"));
-    // }
+        // console.log(breweriesArray)
 
-//OPTION 2 RENDER the `currentSearch` to the `breweryCollectionEl` element
     breweryCollectionEl.empty()
-
-//THE CODE BELOW WAS REPLACED BY STORING AS renderBreweryCollection()
-
-    // for (let i = 0; i < currentSearch.length; i++) {
-    //     var brewery = currentSearch[i];
-    //         // console.log(breweriesArray)
-    // $(breweryCollectionEl).append($("<p>").text(brewery).addClass("collection-item"));
-    // }
-//THE CODE ABOVE WAS REPLACED BY STORING AS renderBreweryCollection()
 
     renderBreweryCollection()
     });
@@ -234,90 +217,9 @@ function renderMainCard(boop){
     generateMap(boop.breweryLat,boop.breweryLon)
     console.log(boop.breweryLon,boop.breweryLat)
 
-
-    // var APIkey = "AIzaSyCNMT79cyhTQf0GVQoNdOpOKcYsTL2jqdQ";
-    // var latitude = boop.breweryLat;
-    // var longitude = boop.breweryLon;
-
-    // getMap(APIkey, latitude, longitude);
-
-//     function getMap(APIkeyVar, latVar, lonVar) {
-//         // var queryURL="https://www.google.com/maps/embed/v1/view?key=AIzaSyCNMT79cyhTQf0GVQoNdOpOKcYsTL2jqdQ&center=47.669159,-122.299126&zoom=18&maptype=satellite";
-//         var queryURL="https://www.google.com/maps/embed/v1/view?key=" + APIkeyVar + "&center=" + latVar + "," + lonVar + "&zoom=18&maptype=satellite";
-//             console.log(queryURL);
-
-//         $.ajax({
-//             url: queryURL,
-//             method: "GET"
-//         })
-//         .then(function(response) {
-//             console.log(response);
-//             $("iframe").attr("src", queryURL);
-
-//         })
-//     }
-
-//     breweryLogo(boop.breweryWebsite);
-
-//     function breweryLogo(url) {
-//         console.log(url);
-//         var queryURL="https://logo.clearbit.com/" + url;
-//             console.log(queryURL);
-
-//         $.ajax({
-//             url: queryURL,
-//             method: "GET"
-//         })
-//         .then(function(response) {
-//             console.log(response);
-//             $("image").attr("src", queryURL);
-//             $("image").attr("alt", "Brewery logo");
-
-//         })
-
-// }
- 
 }
 
-//     // var category = [Any, Miscellaneous, Programming, Dark, Pun, Spooky, Christmas];
 
-// var category = "Any";
-
-// function getJoke() {
-//     var queryURL =  "https://sv443.net/jokeapi/v2/joke/" + category + "?lang=en?amount=1?type=twopart?blacklistFlags=nsfw,religious,political,racist,sexist";
-//     console.log(queryURL);
-
-//     $.ajax({
-//         url: queryURL,
-//         method: "GET"
-//     })
-//     .then(function(response) {
-//         console.log(response);
-//         console.log(response.setup);
-
-//         if(response.flags.racist == true) {
-//             jokeEl.append(($("<p>")).text("We're outta jokes!").addClass("setup"))
-//         } else {
-//             jokeEl.append(($("<p>")).text(response.setup).addClass("setup"));
-//         }
-
-//         if(response.flags.racist == true) {
-//             jokeEl.append(($("<p>")).text("Search again!").addClass("setup"))
-//         } else {
-//             jokeEl.append(($("<p>")).text(response.delivery).addClass("setup"));
-//         }
-//     })
-// }
-
-// searchButtonEl.on("click", function(event) {
-    
-//     event.preventDefault();
-
-//     // var jokeCategoryValue = jokeInputEl.val().trim();
-
-//     getJoke();
-
-// });
 
 
 
@@ -349,9 +251,6 @@ breweryCollectionEl.on("click", function(event){
             //Store the last item clicked to the `currentBrewery`
                 storeCurrentBrewery(currentBrewery);
                 renderMainCard(renderedBreweryObj);
-
-                    
-            
     }
     
 }

@@ -21,7 +21,9 @@ var breweryCollectionEl = $("#resultsList");
 // Declare global variables
 var breweriesArray = [];
 var breweryObj;
+    console.log(breweryObj)
 var currentBrewery = "";
+console.log(currentBrewery)
 var currentSearch = [];
 var currentCity="";
 
@@ -101,6 +103,7 @@ function getBreweries(boop) {
     //Clear the currentSearch of the previous search
     currentSearch = []
     var queryURL="https://api.openbrewerydb.org/breweries?by_city="+boop
+        console.log(queryURL)
     //AJAX call
     $.ajax({
         url: queryURL,
@@ -122,6 +125,8 @@ function getBreweries(boop) {
         }
         breweriesArray.push(breweryObj)
         currentSearch.push(response[i].name)
+            console.log(breweryLat);
+            console.log(breweryLat);
     };
 
     // Store both of the currentSearch and currentSearch to local by invoking the functions below 
@@ -181,6 +186,7 @@ function renderBreweryCollection(){
 function renderMainCard(boop){
 //EMPTY the mainCardEl of any previously generated elements
     mainCardEl.empty()
+    console.log(boop)
 
 //APPEND the name to the `mainCardEl`
     // mainCardEl.append(($("<p>")).text("Name: " + boop.breweryName).addClass("mainCardName"))
@@ -209,6 +215,10 @@ function renderMainCard(boop){
     }else{
         mainCardEl.append(($("<a>")).text("Website: " + boop.breweryWebsite).addClass("mainCardWebsite m5"));
     }
+
+    generateMap(boop.breweryLat,boop.breweryLon)
+    console.log(boop.breweryLon,boop.breweryLat)
+
 
     // var APIkey = "AIzaSyCNMT79cyhTQf0GVQoNdOpOKcYsTL2jqdQ";
     // var latitude = boop.breweryLat;
@@ -251,7 +261,7 @@ function renderMainCard(boop){
 //         })
 
 // }
-
+ 
 }
 
     // var category = [Any, Miscellaneous, Programming, Dark, Pun, Spooky, Christmas];
@@ -318,13 +328,14 @@ breweryCollectionEl.on("click", function(event){
             if(element==breweryToBeRenderedName){
                 // console.log(element)
                 renderedBreweryObj =  breweriesArray[i] ;
-                    // console.log(renderedBreweryObj)
+                    console.log(renderedBreweryObj)
             //SET `currentBrewery` to the last item clicked
                 currentBrewery=breweryToBeRenderedName;
             //Store the last item clicked to the `currentBrewery`
                 storeCurrentBrewery(currentBrewery);
                 renderMainCard(renderedBreweryObj);
-                
+
+                    
             
     }
     
@@ -348,4 +359,59 @@ function initiateMainCard(boop){
                 renderMainCard(renderedBreweryObj);
         }
     }
+}
+
+console.log(currentBrewery)
+//HERE FUNCTIONALITY TO CREATE A MAP
+function generateMap(boopLat,boopLon){
+    //Clear the previous map's contents
+    $("#mapContainer").empty();
+var platform = new H.service.Platform({
+    'apikey': 'oyplKZqjZWkRlK7jD7wKXERHDj0wnsUcAEKdHsCa45Q'
+});
+
+  // Obtain the default map types from the platform object:
+
+    var defaultLayers = platform.createDefaultLayers();
+
+    // Instantiate (and display) a map object:
+    var map = new H.Map(
+        document.getElementById('mapContainer'),
+        defaultLayers.vector.normal.map,
+        {
+        zoom: 17,
+        center: { lat: boopLat, lng: boopLon }
+        });
+        console.log(map)
+
+//HERE functionality to create the marker
+    // Define a variable holding SVG mark-up that defines an icon image:
+    // OPTION 1 START
+    var svgMarkup = '<svg width="24" height="24" ' +
+        'xmlns="http://www.w3.org/2000/svg">' +
+        '<rect stroke="white" fill="#1b468d" x="1" y="1" width="22" ' +
+        'height="22" /><text x="12" y="18" font-size="12pt" ' +
+        'font-family="Arial" font-weight="bold" text-anchor="middle" ' +
+        'fill="white">B</text></svg>';
+
+    // Create an icon, an object holding the latitude and longitude, and a marker:
+    var icon = new H.map.Icon(svgMarkup),
+        coords = {lat: boopLat, lng: boopLon},
+        marker = new H.map.Marker(coords, {icon: icon});
+
+    // Add the marker to the map and center the map at the location of the marker:
+    map.addObject(marker);
+    map.setCenter(coords);
+    // OPTION 1 FINISH
+
+    // //OPTION 2 START
+    // // Create a marker icon from an image URL:
+    // var icon = new H.map.Icon("./Images/beerIcon2.png");
+
+    // // Create a marker using the previously instantiated icon:
+    // var marker = new H.map.Marker({ lat: boopLat, lng: boopLon }, { icon: icon });
+
+    // // Add the marker to the map:
+    // map.addObject(marker);
+    // //OPTION 2 END
 }

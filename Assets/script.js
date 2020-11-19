@@ -103,6 +103,7 @@ function getBreweries(boop) {
     //Clear the currentSearch of the previous search
     currentSearch = []
     var queryURL="https://api.openbrewerydb.org/breweries?by_city="+boop
+        console.log(queryURL)
     //AJAX call
     $.ajax({
         url: queryURL,
@@ -124,6 +125,8 @@ function getBreweries(boop) {
         }
         breweriesArray.push(breweryObj)
         currentSearch.push(response[i].name)
+            console.log(breweryLat);
+            console.log(breweryLat);
     };
 
     // Store both of the currentSearch and currentSearch to local by invoking the functions below 
@@ -212,6 +215,10 @@ function renderMainCard(boop){
     }else{
         mainCardEl.append(($("<a>")).text("Website: " + boop.breweryWebsite).addClass("mainCardWebsite m5"));
     }
+
+    generateMap(boop.breweryLat,boop.breweryLon)
+    console.log(boop.breweryLon,boop.breweryLat)
+
 
     // var APIkey = "AIzaSyCNMT79cyhTQf0GVQoNdOpOKcYsTL2jqdQ";
     // var latitude = boop.breweryLat;
@@ -321,13 +328,14 @@ breweryCollectionEl.on("click", function(event){
             if(element==breweryToBeRenderedName){
                 // console.log(element)
                 renderedBreweryObj =  breweriesArray[i] ;
-                    // console.log(renderedBreweryObj)
+                    console.log(renderedBreweryObj)
             //SET `currentBrewery` to the last item clicked
                 currentBrewery=breweryToBeRenderedName;
             //Store the last item clicked to the `currentBrewery`
                 storeCurrentBrewery(currentBrewery);
                 renderMainCard(renderedBreweryObj);
-                
+
+                    
             
     }
     
@@ -355,18 +363,25 @@ function initiateMainCard(boop){
 
 console.log(currentBrewery)
 //HERE FUNCTIONALITY
+function generateMap(boopLat,boopLon){
+    //Clear the previous map's contents
+    $("#mapContainer").empty();
 var platform = new H.service.Platform({
     'apikey': 'oyplKZqjZWkRlK7jD7wKXERHDj0wnsUcAEKdHsCa45Q'
 });
 
   // Obtain the default map types from the platform object:
-var defaultLayers = platform.createDefaultLayers();
 
-// Instantiate (and display) a map object:
-var map = new H.Map(
-    document.getElementById('mapContainer'),
-    defaultLayers.vector.normal.map,
-    {
-    zoom: 17,
-    center: { lat: 47.66, lng: -122.37 }
-    });
+    var defaultLayers = platform.createDefaultLayers();
+
+    // Instantiate (and display) a map object:
+    var map = new H.Map(
+        document.getElementById('mapContainer'),
+        defaultLayers.vector.normal.map,
+        {
+        zoom: 17,
+        // center: { lat: 47.66, lng: -122.37 }
+        center: { lat: boopLat, lng: boopLon }
+        });
+        console.log(map)
+}

@@ -8,6 +8,7 @@ var resultsHeaderEl = $(".resultsHeader");
 var mainCardEl = $(".mainCard");
 var mainCardNameEl = $(".mainCardName");
 var mainCardTypeEl = $(".mainCardType");
+var mainCardImg = $(".card-image");
 var mainCardAddressEl = $(".mainCardAddress");
 var mainCardPhoneEl = $(".mainCardPhone");
 var mainCardWebsiteEl = $(".mainCardWebsite");
@@ -186,12 +187,21 @@ function renderBreweryCollection(){
 function renderMainCard(boop){
 //EMPTY the mainCardEl of any previously generated elements
     mainCardEl.empty()
+    mainCardImg.empty();
     console.log(boop)
 
 //APPEND the name to the `mainCardEl`
     // mainCardEl.append(($("<p>")).text("Name: " + boop.breweryName).addClass("mainCardName"))
     $(breweryInfoHeaderEl).removeData();
     $(breweryInfoHeaderEl).text(boop.breweryName)
+
+    var breweryLogoURL = "https://logo.clearbit.com/" + boop.breweryWebsite;
+
+    if(breweryLogoURL == "") { 
+        mainCardImg.append(($("<img>")).attr("src", "https://www.freefavicon.com/freefavicons/food/beer-stein-152-202218.png"));
+    } else {
+        mainCardImg.append(($("<img>")).attr("src", breweryLogoURL));
+    }
 
 //APPEND the type to the `mainCardEl`
     mainCardEl.append(($("<p>")).text("Brewery Type: " + boop.breweryType).addClass("mainCardType"))    

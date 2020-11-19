@@ -80,6 +80,7 @@ searchButtonEl.on("click", function(event) {
     event.preventDefault();
 
     var cityInputValue = cityInputEl.val().trim();
+        console.log(cityInputValue)
     
     getBreweries(cityInputValue)
 //CLEAR the currentCity variable of previous input
@@ -101,8 +102,10 @@ function renderCity(boop){
 
 //GET Brewery information from an AJAX call
 function getBreweries(boop) {
+    console.log(currentSearch)
     //Clear the currentSearch of the previous search
     currentSearch = []
+        console.log(currentSearch)
     var queryURL="https://api.openbrewerydb.org/breweries?by_city="+boop
         console.log(queryURL)
     //AJAX call
@@ -113,7 +116,8 @@ function getBreweries(boop) {
     .then(function(response) {
         breweriesArray = []
 // LOOP through the results to store each brewery as an object in our `breweriesArray`
-    for (let i = 0; i < response.length; i++) {
+    for (let i = 0; i < 5; i++) {
+    // for (let i = 0; i < response.length; i++) {
         breweryObj={
             breweryName: response[i].name,
             breweryStreet: response[i].street,
@@ -124,16 +128,17 @@ function getBreweries(boop) {
             breweryLon:response[i].longitude,
             breweryCity:response[i].city,   
         }
+        // console.log(breweryObj)
         breweriesArray.push(breweryObj)
         currentSearch.push(response[i].name)
-            console.log(breweryLat);
-            console.log(breweryLat);
+        console.log(breweriesArray)
     };
 
     // Store both of the currentSearch and currentSearch to local by invoking the functions below 
     storeCurrentSearch(currentSearch)
+    console.log(currentSearch)
     storeBreweriesArray(breweriesArray)
-
+    console.log(breweriesArray)
 //PICK OPTION 1 OR OPTION 2 BELOW to render the `breweryCollectionEl`
 //OPTION 1 RENDER the `breweriesArray` to the `breweryCollectionEl` element
     // for (let i = 0; i < breweriesArray.length; i++) {
@@ -178,7 +183,7 @@ function storeCurrentCity(boop){
 function renderBreweryCollection(){
     for (let i = 0; i < currentSearch.length; i++) {
         var brewery = currentSearch[i];
-            // console.log(breweriesArray)
+            console.log(breweriesArray)
     $(breweryCollectionEl).append($("<p>").text(brewery).addClass("collection-item"));
     }
 }
@@ -274,45 +279,45 @@ function renderMainCard(boop){
  
 }
 
-    // var category = [Any, Miscellaneous, Programming, Dark, Pun, Spooky, Christmas];
+//     // var category = [Any, Miscellaneous, Programming, Dark, Pun, Spooky, Christmas];
 
-var category = "Any";
+// var category = "Any";
 
-function getJoke() {
-    var queryURL =  "https://sv443.net/jokeapi/v2/joke/" + category + "?lang=en?amount=1?type=twopart?blacklistFlags=nsfw,religious,political,racist,sexist";
-    console.log(queryURL);
+// function getJoke() {
+//     var queryURL =  "https://sv443.net/jokeapi/v2/joke/" + category + "?lang=en?amount=1?type=twopart?blacklistFlags=nsfw,religious,political,racist,sexist";
+//     console.log(queryURL);
 
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    })
-    .then(function(response) {
-        console.log(response);
-        console.log(response.setup);
+//     $.ajax({
+//         url: queryURL,
+//         method: "GET"
+//     })
+//     .then(function(response) {
+//         console.log(response);
+//         console.log(response.setup);
 
-        if(response.flags.racist == true) {
-            jokeEl.append(($("<p>")).text("We're outta jokes!").addClass("setup"))
-        } else {
-            jokeEl.append(($("<p>")).text(response.setup).addClass("setup"));
-        }
+//         if(response.flags.racist == true) {
+//             jokeEl.append(($("<p>")).text("We're outta jokes!").addClass("setup"))
+//         } else {
+//             jokeEl.append(($("<p>")).text(response.setup).addClass("setup"));
+//         }
 
-        if(response.flags.racist == true) {
-            jokeEl.append(($("<p>")).text("Search again!").addClass("setup"))
-        } else {
-            jokeEl.append(($("<p>")).text(response.delivery).addClass("setup"));
-        }
-    })
-}
+//         if(response.flags.racist == true) {
+//             jokeEl.append(($("<p>")).text("Search again!").addClass("setup"))
+//         } else {
+//             jokeEl.append(($("<p>")).text(response.delivery).addClass("setup"));
+//         }
+//     })
+// }
 
-searchButtonEl.on("click", function(event) {
+// searchButtonEl.on("click", function(event) {
     
-    event.preventDefault();
+//     event.preventDefault();
 
-    // var jokeCategoryValue = jokeInputEl.val().trim();
+//     // var jokeCategoryValue = jokeInputEl.val().trim();
 
-    getJoke();
+//     getJoke();
 
-});
+// });
 
 
 

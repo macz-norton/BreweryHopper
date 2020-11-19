@@ -8,6 +8,7 @@ var resultsHeaderEl = $(".resultsHeader");
 var mainCardEl = $(".mainCard");
 var mainCardNameEl = $(".mainCardName");
 var mainCardTypeEl = $(".mainCardType");
+var mainCardImg = $(".card-image");
 var mainCardAddressEl = $(".mainCardAddress");
 var mainCardPhoneEl = $(".mainCardPhone");
 var mainCardWebsiteEl = $(".mainCardWebsite");

@@ -197,7 +197,7 @@ function renderMainCard(boop){
 
     var breweryLogoURL = "https://logo.clearbit.com/" + boop.breweryWebsite;
 
-    if(boop.breweryWebsite == " ") {
+    if(breweryLogoURL == "") { 
         mainCardImg.append(($("<img>")).attr("src", "https://www.freefavicon.com/freefavicons/food/beer-stein-152-202218.png"));
     } else {
         mainCardImg.append(($("<img>")).attr("src", breweryLogoURL));

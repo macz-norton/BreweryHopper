@@ -126,12 +126,25 @@ h4 {
 
 .mainCard a {
     color: white;
+    font-size: 18px;
+    font
 
   }
 
-/* #breweryInfo{
-  color: var(--breweryHopperBrown)
-} */
+#limmrickContainerEl{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#limmrickEl{
+  text-align: center;
+  padding-top: 10px;
+  font-size: 50px;
+  font-family: 'Berkshire Swash', cursive;
+  color: var(--breweryHopperBrown);
+  justify-content: center;
+}
 
   @media (max-width: 400px) {
     h1 {

@@ -222,13 +222,13 @@ function renderMainCard(boop){
         // $("#mapContainer").append($("<img>").attr("src", "../LatePlanter/Assets/Images/beerIcon2.png"))
     
     //OPTION 2
-        var limmrick = "There once was an API about Beer, <br>T'was supposed to display a map here, <br> Though it gave us no latitude, <br>We don’t have an attitude,<br>Surely there's some alcohol ...near."
+        var limerick = "There once was an API about Beer, <br>T'was supposed to display a map here, <br> Though it gave us no latitude, <br>We don’t have an attitude,<br>Surely there's some alcohol ...near."
 
         $("#mapContainer")
-        .append($("<div>").attr("id","limmrickContainerEl"))
+        .append($("<div>").attr("id","limerickContainerEl"))
         .append($("<p>")
-        .attr("id", "limmrickEl")
-        .append(limmrick))
+        .attr("id", "limerickEl")
+        .append(limerick))
 
     }else{
 

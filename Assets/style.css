@@ -131,13 +131,13 @@ h4 {
 
   }
 
-#limmrickContainerEl{
+#limerickContainerEl{
   display:flex;
   justify-content: center;
   align-items: center;
 }
 
-#limmrickEl{
+#limerickEl{
   text-align: center;
   padding-top: 10px;
   font-size: 46px;

@@ -224,20 +224,12 @@ function renderMainCard(boop){
     //OPTION 2
         var limmrick = "There once was an API about Beer, <br>T'was supposed to display a map here, <br> Though it gave us no latitude, <br>We don’t have an attitude,<br>Surely there's some alcohol ...near."
 
-        // $("#mapContainer")
-        // .append($("<p>")
-        // .attr("id", "limmrickEl")
-        // .append(limmrick))
-
-    //OPTION 3
         $("#mapContainer")
         .append($("<div>").attr("id","limmrickContainerEl"))
         .append($("<p>")
         .attr("id", "limmrickEl")
         .append(limmrick))
 
-        // .append($("<div>")).attr("id","limmrickContainerEl")
-        // .append($("<p>").attr("id", "limmrickEl").append(limmrick))
     }else{
 
     generateMap(boop.breweryLat,boop.breweryLon)
@@ -345,14 +337,5 @@ var platform = new H.service.Platform({
     map.setCenter(coords);
     // OPTION 1 FINISH
 
-    // //OPTION 2 START
-    // // Create a marker icon from an image URL:
-    // var icon = new H.map.Icon("../LatePlanter/Assets/Images/beerIcon.png");
 
-    // // Create a marker using the previously instantiated icon:
-    // var marker = new H.map.Marker({ lat: boopLat, lng: boopLon }, { icon: icon });
-
-    // // Add the marker to the map:
-    // map.addObject(marker);
-    // //OPTION 2 END
 }

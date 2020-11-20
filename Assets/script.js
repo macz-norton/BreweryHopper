@@ -326,13 +326,14 @@ var platform = new H.service.Platform({
 
 //HERE functionality to create the marker
     // Define a variable holding SVG mark-up that defines an icon image:
+
     // OPTION 1 START
-    var svgMarkup = '<svg width="24" height="24" ' +
+    var svgMarkup = '<svg width="60" height="24" ' +
         'xmlns="http://www.w3.org/2000/svg">' +
-        '<rect stroke="white" fill="#5E1717" x="1" y="1" width="22" ' +
-        'height="22" /><text x="12" y="18" font-size="12pt" ' +
+        '<rect stroke="white" fill="#5E1717" x="1" y="1" width="50" ' +
+        'height="22" /><text x="26" y="18" font-size="12pt" ' +
         'font-family="Arial" font-weight="bold" text-anchor="middle" ' +
-        'fill="white">B</text></svg>';
+        'fill="white">BEER</text></svg>';
 
     // Create an icon, an object holding the latitude and longitude, and a marker:
     var icon = new H.map.Icon(svgMarkup),
@@ -346,7 +347,7 @@ var platform = new H.service.Platform({
 
     // //OPTION 2 START
     // // Create a marker icon from an image URL:
-    // var icon = new H.map.Icon("./Images/beerIcon2.png");
+    // var icon = new H.map.Icon("../LatePlanter/Assets/Images/beerIcon.png");
 
     // // Create a marker using the previously instantiated icon:
     // var marker = new H.map.Marker({ lat: boopLat, lng: boopLon }, { icon: icon });

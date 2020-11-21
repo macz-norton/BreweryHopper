@@ -171,6 +171,11 @@ function renderBreweryCollection(){
     }
 }
 
+function myScript(){
+
+    mainCardImg.append(($("<img>")).attr("src", "https://www.freefavicon.com/freefavicons/food/beer-stein-152-202218.png"));
+    mainCardImg.append($("<p>").text("Error! Someone design this brewery a logo!"))
+};
 //DECLARE the function to RENDER the main card
 function renderMainCard(boop){
 //EMPTY the mainCardEl of any previously generated elements
@@ -184,12 +189,16 @@ function renderMainCard(boop){
     $(breweryInfoHeaderEl).text(boop.breweryName)
 
     var breweryLogoURL = "https://logo.clearbit.com/" + boop.breweryWebsite;
+        console.log(breweryLogoURL)
+    mainCardImg.append(($("<img>")).attr("src", breweryLogoURL).attr("onerror", "myScript()"));
 
-    if(breweryLogoURL == "") { 
-        mainCardImg.append(($("<img>")).attr("src", "https://www.freefavicon.com/freefavicons/food/beer-stein-152-202218.png"));
-    } else {
-        mainCardImg.append(($("<img>")).attr("src", breweryLogoURL));
-    }
+
+        // onerror="myScript"
+    // if(breweryLogoURL == "") { 
+    //     mainCardImg.append(($("<img>")).attr("src", "https://www.freefavicon.com/freefavicons/food/beer-stein-152-202218.png"));
+    // } else {
+    //     mainCardImg.append(($("<img>")).attr("src", breweryLogoURL));
+    // }
 
 //APPEND the type to the `mainCardEl`
     mainCardEl.append(($("<p>")).text("Brewery Type: " + boop.breweryType).addClass("mainCardType"))    

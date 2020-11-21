@@ -172,9 +172,9 @@ function renderBreweryCollection(){
 }
 
 function myScript(){
-
+    mainCardImg.empty();
     mainCardImg.append(($("<img>")).attr("src", "https://www.freefavicon.com/freefavicons/food/beer-stein-152-202218.png"));
-    mainCardImg.append($("<p>").text("Error! Someone design this brewery a logo!"))
+    mainCardImg.append($("<p>").text("Error! Someone design this brewery a logo"))
 };
 //DECLARE the function to RENDER the main card
 function renderMainCard(boop){

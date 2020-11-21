@@ -170,6 +170,7 @@ function renderBreweryCollection(){
     $(breweryCollectionEl).append($("<p>").text(brewery).addClass("collection-item"));
     }
 }
+// beerIconPath = "./Images/beerIcon.png"
 
 function myScript(){
     mainCardImg.empty();
@@ -177,6 +178,8 @@ function myScript(){
     // mainCardImg.append(($("<img>")).attr("src", "https://www.freefavicon.com/freefavicons/food/beer-stein-152-202218.png"));
 //instead of the line above, i saved the image locally just to try.
     mainCardImg.append(($("<img>")).attr("src", "../LatePlanter/Assets/Images/beerIcon.png"));
+    // mainCardImg.append(($("<img>")).attr("src", beerIconPath));
+    // mainCardImg.append(($("<img>")).attr("src", "../Assets/Images/beerIcon.png"));
     mainCardImg.append($("<p>").text("Error! Someone design this brewery a logo"))
 };
 //DECLARE the function to RENDER the main card

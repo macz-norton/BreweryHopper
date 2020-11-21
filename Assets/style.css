@@ -33,6 +33,8 @@ h1 {
 
 h4 {
   padding: 5px;
+  /* font-family: 'Berkshire Swash', cursive; */
+  color: var(--breweryHopperBrown)
 }
 
 .top {
@@ -82,7 +84,8 @@ h4 {
 
 .searchButton {
 
-    background-color: rgb(8, 130, 151);
+    /* background-color: rgb(8, 130, 151); */
+    background-color: var(--breweryHopperBrown);
     color: white;
     margin-left: 3px;
 }
@@ -90,6 +93,8 @@ h4 {
  .collection-item {
 
   background-color:rgb(59, 42, 42) ;
+  font-family: 'Berkshire Swash', cursive;
+  color: var(--breweryHopperBrown)
     
 } 
 

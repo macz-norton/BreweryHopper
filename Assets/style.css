@@ -133,12 +133,12 @@ h4 {
 
   }
 
-/* #limerickContainerEl{
+#limerickContainerEl{
   display: flex;
   justify-content: center;
   align-content: center;
   width:100%;
-} */
+}
 
 #limerickEl{
   text-align: center;

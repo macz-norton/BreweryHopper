@@ -87,9 +87,11 @@ h4 {
     margin-left: 3px;
 }
 
-/* .collection-item {
+ .collection-item {
+
+  background-color:rgb(59, 42, 42) ;
     
-} */
+} 
 
 .collection-item:hover {
     background-color: rgb(8, 130, 151);
@@ -127,20 +129,22 @@ h4 {
 .mainCard a {
     color: white;
     font-size: 18px;
-    font
+    
 
   }
 
-#limerickContainerEl{
-  display:flex;
+/* #limerickContainerEl{
+  display: flex;
   justify-content: center;
-  align-items: center;
-}
+  align-content: center;
+  width:100%;
+} */
 
 #limerickEl{
   text-align: center;
-  padding-top: 10px;
-  font-size: 46px;
+  padding-top: 15%;
+  padding-bottom: 20%;
+  font-size: 44px;
   font-family: 'Berkshire Swash', cursive;
   color: var(--breweryHopperBrown);
 }
@@ -166,9 +170,25 @@ h4 {
     }
   }
 
+
+
   #mapContainer {
     margin-top: 35px;
     margin-right: 0px;
+    display:flex;
+    
+    
+  }
+
+
+  .buttonSize{
+
+    width:20%
+  }
+
+  #cityName{
+    width:80%
+
   }
 
 
